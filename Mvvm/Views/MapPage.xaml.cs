@@ -18,14 +18,12 @@ public partial class MapPage : ContentPage
         {
             Html = _viewModel.MapHtml
         };
+
+        // Register the event handler only once
         mapWebView.Navigating += WebView_Navigating;
-        SetupWebView();
     }
 
-    private void SetupWebView()
-    {
-        mapWebView.Navigating += WebView_Navigating;
-    }
+    // Remove the SetupWebView method as it's no longer needed
 
     private void WebView_Navigating(object sender, WebNavigatingEventArgs e)
     {

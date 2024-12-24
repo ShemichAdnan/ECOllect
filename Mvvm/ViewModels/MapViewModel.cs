@@ -34,7 +34,7 @@ public class MapViewModel : BaseViewModel
             text-decoration: none;
             font-weight: bold;
             font-size: 16px;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             text-align: center;
         }}
         .popup-container {{
@@ -96,4 +96,3 @@ public class MapViewModel : BaseViewModel
 </html>";
     }
 }
-
