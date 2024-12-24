@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace ECOllect.Models
 {
@@ -110,7 +111,7 @@ namespace ECOllect.Models
 
         public static ObservableCollection<Sponsor> GetSampleSponsors()
         {
-            return new ObservableCollection<Sponsor>
+            var sponsors =new ObservableCollection<Sponsor>
         {
             new Sponsor
             {
@@ -215,6 +216,15 @@ namespace ECOllect.Models
                 }
             }
         };
+            foreach (var sponsor in sponsors)
+            {
+                foreach (var promotion in sponsor.Promotions)
+                {
+                    promotion.Sponsor = sponsor;
+                }
+            }
+
+            return sponsors;
         }
     }
 }

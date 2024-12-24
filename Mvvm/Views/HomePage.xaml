@@ -316,6 +316,10 @@
                                                        BackgroundColor="#F8F8F8"
                                                        CornerRadius="8"
                                                        WidthRequest="80">
+                                                        <Frame.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=NavigateToPromotionCommand}"
+                                                                 CommandParameter="{Binding .}"/>
+                                                        </Frame.GestureRecognizers>
                                                         <Grid RowSpacing="0">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="80"/>

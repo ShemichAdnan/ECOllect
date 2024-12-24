@@ -9,7 +9,7 @@ namespace ECOllect.ViewModels;
 public class HomeViewModel : BaseViewModel
 {
     public ObservableCollection<CommunityAction> DisplayedActions { get; } = new();
-    public ObservableCollection<Promotion> Promotions { get; } = new();
+    public ObservableCollection<Sponsor> Sponsors { get; } = new();
 
     private readonly ObservableCollection<CommunityAction> _allActions;
     private int _currentIndex = 0;
@@ -17,6 +17,7 @@ public class HomeViewModel : BaseViewModel
 
     public ICommand LoadMoreCommand { get; }
     public ICommand NavigateToDetailCommand { get; }
+    public ICommand NavigateToPromotionCommand { get; }
 
     private bool _isLoadMoreButtonVisible = true;
     public bool IsLoadMoreButtonVisible
@@ -47,7 +48,7 @@ public class HomeViewModel : BaseViewModel
     public HomeViewModel()
     {
         _allActions = SampleData.GetSampleActions();
-        
+        Sponsors = SampleData.GetSampleSponsors();
 
         LoadInitialItems();
         LoadMoreCommand = new Command(LoadMoreItems);
@@ -58,6 +59,19 @@ public class HomeViewModel : BaseViewModel
                 await Application.Current.MainPage.Navigation.PushAsync(new ActionDetailPage(action));
             }
         });
+
+        NavigateToPromotionCommand = new Command<Promotion>(async (promotion) =>
+        {
+            if (promotion != null)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new PromotionDetailPage(promotion));
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Promotion data is missing!", "OK");
+            }
+        });
+
 
         _allSponsors = SampleData.GetSampleSponsors();
         DisplayedSponsors = new ObservableCollection<Sponsor>();
@@ -100,3 +114,4 @@ public class HomeViewModel : BaseViewModel
         IsLoadMoreSponsorsVisible = _sponsorsCurrentIndex < _allSponsors.Count;
     }
 }
+

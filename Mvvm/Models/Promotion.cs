@@ -1,11 +1,14 @@
-namespace ECOllect.Models;
-
-public class Promotion
+namespace ECOllect.Models
 {
-    public string Id { get; set; }
-    public string Title { get; set; }
-    public string ImageUrl { get; set; }
-    public int PointsCost { get; set; }
-    public string Description { get; set; }
-    public DateTime ValidUntil { get; set; }
+    public class Promotion
+    {
+        public string Id { get; set; } = string.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
+        public int PointsCost { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public DateTime ValidUntil { get; set; }
+        public Sponsor Sponsor { get; set; }
+    }
 }
+
