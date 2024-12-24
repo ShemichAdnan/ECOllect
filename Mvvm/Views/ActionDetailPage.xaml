@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECOllect.Views.ActionDetailPage"
+             NavigationPage.HasNavigationBar="False">
+    
+    <Grid>
+        <!-- Replace the hardcoded background with the action image -->
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Aspect="AspectFill"
+               Source="{Binding Image}"
+               Opacity="0.9"/>
+
+            <!-- Add a semi-transparent overlay for better text readability -->
+            <Frame BackgroundColor="Black"
+                Opacity="0.4"/>
+
+            <!-- Rest of your XAML remains the same -->
+            <!-- Header Section -->
+            <Grid Padding="16,40,16,16">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Top Bar -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Back Button -->
+                    <Frame Padding="-8,0,0,0" 
+                           BackgroundColor="Transparent"
+                           CornerRadius="20"
+                           BorderColor="Transparent"
+                           >
+                        <Image Source="back.png" HeightRequest="30"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBackButtonClicked"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <!-- Stats -->
+                    <HorizontalStackLayout Grid.Column="2" Spacing="10">
+                        <Frame BackgroundColor="Transparent" 
+                           Padding="10,5"
+                           BorderColor="white"
+                           CornerRadius="20">
+                            <HorizontalStackLayout Spacing="5" Padding="5,0">
+                                <Label Text="18" 
+                                   TextColor="white"
+                                   VerticalOptions="Center"
+                                   FontAttributes="Bold"/>
+                                <Image Source="whitecoin.png" 
+                                   HeightRequest="17" 
+                                   WidthRequest="17"
+                                   VerticalOptions="Center"
+                                       />
+                            </HorizontalStackLayout>
+                        </Frame>
+                        <Frame Padding="0"
+                           BorderColor="Transparent"
+                           CornerRadius="20"
+                           HeightRequest="40"
+                           WidthRequest="40"
+                           IsClippedToBounds="True"
+                           BackgroundColor="Transparent">
+                            <Image Source="profile_icon.png" 
+                               Aspect="AspectFill"
+                               HeightRequest="40" 
+                               WidthRequest="40"
+                               />
+                        </Frame>
+                    </HorizontalStackLayout>
+                </Grid>
+
+                <!-- Title Section -->
+                <VerticalStackLayout Grid.Row="1" 
+                                   VerticalOptions="End"
+                                   Spacing="10"
+                                     Padding="0,0,0,30">
+                    <Label Text="{Binding Date, StringFormat='{0:dd. MM. yyyy  -  HH:mm}'}"
+                           TextColor="#B5B5B5"
+                           FontSize="16"
+                           FontAttributes="Bold"/>
+                    <Label Text="{Binding Title}"
+                           TextColor="White"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           WidthRequest="230"
+                           HorizontalOptions="Start"/>
+
+
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <HorizontalStackLayout Grid.Column="0">
+                            <Label Text="{Binding Prize}"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               Padding="10,4,8,0"
+                               FontSize="17"/>
+                            <Image Source="greencoin.png"
+                               HeightRequest="20"
+                               WidthRequest="20"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Grid.Column="1">
+                            <Label Text="{Binding ParticipantCount}"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                                   Padding="20,4,8,0"
+                                   FontSize="17"/>
+                            <Image Source="greenparticipants.png"
+                               HeightRequest="20"
+                               WidthRequest="20"/>
+                        </HorizontalStackLayout>
+
+                        <Frame Padding="10,5"
+                               BackgroundColor="White"
+                               CornerRadius="15"
+                               HorizontalOptions="End"
+                               Grid.Column="2"
+                               BorderColor="Transparent">
+                            <Label Text="{Binding Location}"
+                                   TextColor="Black"
+                                   FontSize="14"/>
+                        </Frame>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Grid>
+
+            <!-- Description Section -->
+            <Frame Grid.Row="1"
+                   BackgroundColor="White"
+                   CornerRadius="20"
+                   Padding="20"
+                   Margin="0,-20,0,0"
+                   BorderColor="White">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Opis akcije"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+                    <Label Text="{Binding Description}"
+                           TextColor="Gray"
+                           FontSize="16"/>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>
