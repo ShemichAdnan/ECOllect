@@ -65,47 +65,7 @@ namespace ECOllect.Models
                     Image = "logo.png",
                     HasJoined = false
                 },
-                new CommunityAction
-                {
-                    Id = "4",
-                    Title = "Smetovi",
-                    Description = "Zelena akcija za ljepši grad. Svako novo drvo čini razliku!",
-                    Date = new DateTime(2025, 1, 15,9,30,0),
-                    Location = "Smetovi",
-                    Latitude = 44.245417,
-                    Longitude = 17.962172,
-                    ParticipantCount = 30,
-                    Prize = 15,
-                    Image = "logo.png",
-                    HasJoined = false
-                },
-                new CommunityAction
-                {
-                    Id = "4",
-                    Title = "Smetovi",
-                    Description = "Zelena akcija za ljepši grad. Svako novo drvo čini razliku!",
-                    Date = new DateTime(2025, 1, 15,9,30,0),
-                    Location = "Smetovi",
-                    Latitude = 44.245417,
-                    Longitude = 17.962172,
-                    ParticipantCount = 30,
-                    Prize = 15,
-                    Image = "logo.png",
-                    HasJoined = false
-                },new CommunityAction
-                {
-                    Id = "4",
-                    Title = "Smetovi",
-                    Description = "Zelena akcija za ljepši grad. Svako novo drvo čini razliku!",
-                    Date = new DateTime(2025, 1, 15,9,30,0),
-                    Location = "Smetovi",
-                    Latitude = 44.245417,
-                    Longitude = 17.962172,
-                    ParticipantCount = 30,
-                    Prize = 15,
-                    Image = "logo.png",
-                    HasJoined = false
-                },
+                
             };
         }
 
@@ -124,46 +84,41 @@ namespace ECOllect.Models
                     new Promotion
                     {
                         Id = "1",
-                        Title = "SIM2GO 10GB",
+                        Title = "10GB mobilnog internetaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                         ImageUrl = "bhtelecom.png",
                         PointsCost = 100,
-                        Description = "10GB mobilnog interneta",
                         ValidUntil = DateTime.Now.AddMonths(1)
                     },
                     new Promotion
                     {
                         Id = "2",
-                        Title = "BH Telecom internet",
+                        Title = "10GB mobilnog interneta",
                         ImageUrl = "bhtelecom.png",
                         PointsCost = 80,
-                        Description = "Kupon za besplatnih 7GB 7 dana",
                         ValidUntil = DateTime.Now.AddMonths(1)
                     },
                     new Promotion
                     {
-                        Id = "2",
-                        Title = "BH Telecom internet",
+                        Id = "3",
+                        Title = "10GB mobilnog interneta",
                         ImageUrl = "bhtelecom.png",
                         PointsCost = 80,
-                        Description = "Kupon za besplatnih 7GB 7 dana",
                         ValidUntil = DateTime.Now.AddMonths(1)
                     },
                     new Promotion
                     {
-                        Id = "2",
-                        Title = "BH Telecom internet",
+                        Id = "4",
+                        Title = "10GB mobilnog interneta",
                         ImageUrl = "bhtelecom.png",
                         PointsCost = 80,
-                        Description = "Kupon za besplatnih 7GB 7 dana",
                         ValidUntil = DateTime.Now.AddMonths(1)
                     },
                     new Promotion
                     {
-                        Id = "2",
-                        Title = "BH Telecom internet",
+                        Id = "5",
+                        Title = "10GB mobilnog interneta",
                         ImageUrl = "bhtelecom.png",
                         PointsCost = 80,
-                        Description = "Kupon za besplatnih 7GB 7 dana",
                         ValidUntil = DateTime.Now.AddMonths(1)
                     }
                 }
@@ -178,20 +133,18 @@ namespace ECOllect.Models
                 {
                     new Promotion
                     {
-                        Id = "3",
-                        Title = "Salčinović bon",
+                        Id = "1",
+                        Title = "7KM bon",
                         ImageUrl = "salcinovic.png",
                         PointsCost = 105,
-                        Description = "7KM bon u svim Salčinović restoranima",
                         ValidUntil = DateTime.Now.AddMonths(1)
                     },
                     new Promotion
                     {
-                        Id = "4",
-                        Title = "Salčinović popust",
+                        Id = "2",
+                        Title = "20% popusta",
                         ImageUrl = "salcinovic.png",
                         PointsCost = 75,
-                        Description = "20% popusta na sve menije",
                         ValidUntil = DateTime.Now.AddMonths(1)
                     }
                 }
@@ -206,11 +159,10 @@ namespace ECOllect.Models
                 {
                     new Promotion
                     {
-                        Id = "5",
-                        Title = "dm poklon bon",
+                        Id = "1",
+                        Title = "dm poklon bon 15KM",
                         ImageUrl = "dmlogo.png",
                         PointsCost = 150,
-                        Description = "Poklon bon u vrijednosti 15 KM",
                         ValidUntil = DateTime.Now.AddMonths(1)
                     }
                 }

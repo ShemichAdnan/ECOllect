@@ -6,7 +6,6 @@ public class ActionDetailViewModel : BaseViewModel
 {
     private readonly CommunityAction _action;
 
-    // These properties match exactly what's being bound in the XAML
     public string Id => _action.Id;
     public string Title => _action.Title;
     public string Description => _action.Description;

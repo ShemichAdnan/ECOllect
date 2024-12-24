@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ECOllect.Views.PromotionDetailPage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
 
     <ScrollView>
         <VerticalStackLayout Spacing="0">
-            <!-- Header -->
+
             <Grid BackgroundColor="#4CD964" Padding="16,40,16,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -14,88 +15,140 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Back Button -->
-                <Frame Grid.Column="0" 
-                       Padding="8,4"
-                       BackgroundColor="Transparent"
-                       BorderColor="Transparent"
-                       CornerRadius="20">
+                
+                <Frame Grid.Column="0"
+                    Padding="-8,0,0,0" 
+                   BackgroundColor="Transparent"
+                   CornerRadius="20"
+                   BorderColor="Transparent"
+                   >
+                    <Image Source="blackback.png" HeightRequest="30"/>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
                     </Frame.GestureRecognizers>
-                    <Label Text="←" 
-                           TextColor="Black" 
-                           FontSize="24"
-                           VerticalOptions="Center"/>
                 </Frame>
 
-                <!-- Points Display -->
-                <Frame Grid.Column="2"
-                       Padding="12,6"
-                       BackgroundColor="#262938"
+
+                
+                <HorizontalStackLayout Grid.Column="2" Spacing="10">
+                    <Frame BackgroundColor="Transparent" 
+                           Padding="10,5"
+                           BorderColor="black"
+                           CornerRadius="20">
+                        <HorizontalStackLayout Spacing="5" Padding="5,0">
+                            <Label Text="18" 
+                               TextColor="Black"
+                               VerticalOptions="Center"
+                                   FontAttributes="Bold"/>
+                            <Image Source="blackcoin.png" 
+                           HeightRequest="17" 
+                           WidthRequest="17"
+                           VerticalOptions="Center"
+                                   />
+                        </HorizontalStackLayout>
+                    </Frame>
+                    <Frame Padding="0"
                        BorderColor="Transparent"
-                       CornerRadius="20">
-                    <HorizontalStackLayout Spacing="6">
-                        <Label Text="{Binding UserPoints}"
-                               TextColor="White"
-                               FontSize="16"
-                               VerticalOptions="Center"/>
-                        <Image Source="blackcoin.png"
-                               HeightRequest="20"
-                               WidthRequest="20"/>
-                    </HorizontalStackLayout>
-                </Frame>
+                       CornerRadius="20"
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       IsClippedToBounds="True"
+                           BackgroundColor="Transparent">
+                        <Image Source="profile_icon.png" 
+                       Aspect="AspectFill"
+                       HeightRequest="40" 
+                       WidthRequest="40"
+                       BackgroundColor="Transparent"/>
+                    </Frame>
+                </HorizontalStackLayout>
             </Grid>
 
-            <!-- Promotion Details -->
-            <VerticalStackLayout Padding="16" BackgroundColor="#4CD964" Spacing="16">
-                <Label Text="{Binding Sponsor.Name}"
-                       TextColor="Black"
-                       FontSize="20"/>
 
-                <Label Text="{Binding Promotion.Title}"
-                       TextColor="Black"
-                       FontSize="32"
-                       FontAttributes="Bold"/>
+                <Grid Padding="16" BackgroundColor="#4CD964" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                    
+                    
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                    <Label Text="{Binding Sponsor.Name}"
+                       TextColor="#484848"
+                       FontSize="18"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                       />
 
-                <HorizontalStackLayout Spacing="4">
+
                     <Label Text="{Binding Promotion.PointsCost}"
-                           TextColor="Black"
-                           FontSize="20"
-                           VerticalOptions="Center"/>
-                    <Image Source="blackcoin.png"
-                           HeightRequest="20"
-                           WidthRequest="20"
-                           VerticalOptions="Center"/>
-                </HorizontalStackLayout>
+                           TextColor="#262938"
+                           FontSize="15"
+                           
+                           FontAttributes="Bold"
+                               Grid.Column="1"
+                               Padding="0,3,5,0"
+                           HorizontalOptions="End"/>
+                        <Image Source="blackcoin.png"
+                           HeightRequest="15"
+                           WidthRequest="15"
+                           Margin="0,0,0,13"
+                               Grid.Column="2"
+                               HorizontalOptions="End"/>
+                    </Grid>
+                <Label Text="{Binding Promotion.Title}"
+                       TextColor="#262938"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                           WidthRequest="200" 
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           Padding="0,0,10,0"/>
+
+
+
 
                 <Button Text="Preuzmi nagradu"
                         Command="{Binding RedeemCommand}"
                         BackgroundColor="#262938"
                         TextColor="White"
                         CornerRadius="25"
-                        HeightRequest="50"
-                        Margin="0,10"/>
+                        FontAttributes="Bold"
+                        Margin="0,20,0,10"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                            WidthRequest="150"/>
 
-                <Frame HeightRequest="200"
+                <Frame Margin="10"
                        Padding="0"
                        CornerRadius="12"
-                       IsClippedToBounds="True">
+                       IsClippedToBounds="True"
+                       Grid.Row="0"
+                           Grid.RowSpan="3"
+                        Grid.Column="1"
+                       BackgroundColor="Transparent"
+                       BorderColor="Transparent">
                     <Image Source="{Binding Promotion.ImageUrl}"
-                           Aspect="AspectFill"/>
+                        Aspect="AspectFill"/>
                 </Frame>
-            </VerticalStackLayout>
+            </Grid>
 
-            <!-- Related Promotions -->
             <VerticalStackLayout Padding="16" Spacing="16">
                 <Label Text="{Binding RelatedPromotionsTitle}"
-                       TextColor="#666666"
-                       FontSize="18"
-                       Margin="0,10"/>
+                       TextColor="#050505"
+                       FontSize="23"
+                       Margin="0,10"
+                       FontAttributes="Bold"/>
 
-                <Label Text="Dostupni bonusi"
-                       TextColor="#999999"
-                       FontSize="14"/>
 
                 <CollectionView ItemsSource="{Binding RelatedPromotions}"
                               ItemsLayout="VerticalGrid, 2">
@@ -106,7 +159,10 @@
                                    BorderColor="Transparent"
                                    BackgroundColor="White"
                                    CornerRadius="8">
-
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenPromotionCommand}"
+                                          CommandParameter="{Binding}" />
+                                </Frame.GestureRecognizers>
 
                                 <Grid RowSpacing="0">
                                     <Grid.RowDefinitions>
@@ -123,7 +179,9 @@
                                                        Spacing="4">
                                         <Label Text="{Binding Title}"
                                                TextColor="Black"
-                                               FontSize="14"/>
+                                               FontSize="14"
+                                               LineBreakMode="TailTruncation"
+                                                MaxLines="1"/>
                                         <HorizontalStackLayout Spacing="4">
                                             <Label Text="{Binding PointsCost}"
                                                    TextColor="Black"

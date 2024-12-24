@@ -72,8 +72,9 @@
                            CornerRadius="20">
                         <HorizontalStackLayout Spacing="5" Padding="5,0">
                             <Label Text="18" 
-                               TextColor="Black"
-                               VerticalOptions="Center"/>
+                               TextColor="#6C6C6C"
+                               VerticalOptions="Center"
+                                   FontAttributes="Bold"/>
                             <Image Source="grayCoin.png" 
                                HeightRequest="17" 
                                WidthRequest="17"
@@ -110,7 +111,7 @@
 
                 </Grid>
 
-                <Label Text="Nedavne akcije" Margin="0,10" TextColor="#9C9C9C" FontSize="Medium"/>
+                <Label Text="Nedavne akcije"  TextColor="#9C9C9C" FontSize="Medium"/>
 
                 <CollectionView ItemsSource="{Binding DisplayedActions}">
                     <CollectionView.ItemTemplate>
@@ -253,7 +254,7 @@
                        BackgroundColor="white"
                        CornerRadius="12">
                                 <VerticalStackLayout Spacing="12">
-                                    <!-- Sponsor Header -->
+                                    
                                     <Grid ColumnSpacing="12" BackgroundColor="#F3F3F3" Padding="16,10">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
@@ -261,7 +262,7 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <!-- Sponsor Logo -->
+                                       
                                         <Frame HeightRequest="32" 
                                            WidthRequest="32"
                                            Padding="0"
@@ -273,7 +274,7 @@
                                                 Aspect="AspectFill"/>
                                         </Frame>
 
-                                        <!-- Sponsor Name and Subtitle -->
+                                       
                                         <VerticalStackLayout Grid.Column="1" 
                                                Spacing="2">
                                             <Label Text="{Binding Name}"
@@ -288,7 +289,7 @@
                                             
                                         </VerticalStackLayout>
 
-                                        <!-- View More Link -->
+                                        
                                         <Frame VerticalOptions="Center" Padding="10,5" Grid.Column="2" BorderColor="Transparent" BackgroundColor="#DEDEDE" CornerRadius="20">
                                             <Label 
                                            Text="Pogledaj više"
@@ -301,7 +302,7 @@
                                            
                                     </Grid>
 
-                                    <!-- Promotions Grid -->
+                                    
                                     <Frame HeightRequest="120" 
                                            Padding="5,0,0,0"
                                            BorderColor="Transparent"
@@ -326,12 +327,12 @@
                                                                 <RowDefinition Height="Auto"/>
                                                             </Grid.RowDefinitions>
 
-                                                            <!-- Promotion Image -->
+                                                            
                                                             <Image Source="{Binding ImageUrl}"
                                                                Aspect="AspectFill"
                                                                HeightRequest="80"/>
 
-                                                            <!-- Points Cost -->
+                                                            
                                                             <Frame Grid.Row="1"
                                                                    Padding="8,4"
                                                                    BackgroundColor="#F8F8F8"
@@ -360,7 +361,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <!-- Load More Button -->
+                
                 <Button Text="Istraži više ponuda"
             IsVisible="{Binding IsLoadMoreSponsorsVisible}"
             Command="{Binding LoadMoreSponsorsCommand}"

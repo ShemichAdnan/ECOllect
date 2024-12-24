@@ -12,7 +12,7 @@ public partial class ActionDetailPage : ContentPage
     }
     private async void OnBackButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PopAsync(); // Navigate back to the previous page
+        await Navigation.PopAsync(); 
     }
 }
     

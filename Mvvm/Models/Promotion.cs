@@ -6,7 +6,6 @@ namespace ECOllect.Models
         public string Title { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
         public int PointsCost { get; set; }
-        public string Description { get; set; } = string.Empty;
         public DateTime ValidUntil { get; set; }
         public Sponsor Sponsor { get; set; }
     }

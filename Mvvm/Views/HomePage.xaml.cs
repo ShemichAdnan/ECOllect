@@ -14,7 +14,6 @@ public partial class HomePage : ContentPage
     {
         if (sender is Frame frame && frame.BindingContext is CommunityAction action)
         {
-            // Navigacija na novu stranicu
             await Navigation.PushAsync(new ActionDetailPage(action));
         }
     }

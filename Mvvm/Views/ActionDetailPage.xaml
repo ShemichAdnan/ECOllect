@@ -5,7 +5,7 @@
              NavigationPage.HasNavigationBar="False">
     
     <Grid>
-        <!-- Replace the hardcoded background with the action image -->
+        
 
         <Grid>
 
@@ -17,19 +17,18 @@
                Source="{Binding Image}"
                Opacity="0.9"/>
 
-            <!-- Add a semi-transparent overlay for better text readability -->
+            
             <Frame BackgroundColor="Black"
                 Opacity="0.4"/>
 
-            <!-- Rest of your XAML remains the same -->
-            <!-- Header Section -->
+            
             <Grid Padding="16,40,16,16">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Top Bar -->
+                
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40"/>
@@ -37,7 +36,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Back Button -->
+                    
                     <Frame Padding="-8,0,0,0" 
                            BackgroundColor="Transparent"
                            CornerRadius="20"
@@ -49,7 +48,7 @@
                         </Frame.GestureRecognizers>
                     </Frame>
 
-                    <!-- Stats -->
+                    
                     <HorizontalStackLayout Grid.Column="2" Spacing="10">
                         <Frame BackgroundColor="Transparent" 
                            Padding="10,5"
@@ -83,7 +82,7 @@
                     </HorizontalStackLayout>
                 </Grid>
 
-                <!-- Title Section -->
+                
                 <VerticalStackLayout Grid.Row="1" 
                                    VerticalOptions="End"
                                    Spacing="10"
@@ -146,7 +145,7 @@
                 </VerticalStackLayout>
             </Grid>
 
-            <!-- Description Section -->
+            
             <Frame Grid.Row="1"
                    BackgroundColor="White"
                    CornerRadius="20"

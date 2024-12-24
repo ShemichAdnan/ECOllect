@@ -49,7 +49,6 @@ public class PromotionDetailViewModel : BaseViewModel
 
     private void LoadRelatedPromotions()
     {
-        // Get all promotions from the same sponsor
         var related = Sponsor.Promotions
             .Where(p => p.Id != Promotion.Id)
             .ToList();
@@ -67,7 +66,6 @@ public class PromotionDetailViewModel : BaseViewModel
 
     private async Task RedeemPromotion()
     {
-        // Implement redemption logic here
         await Application.Current.MainPage.DisplayAlert("Success", "Nagrada je preuzeta!", "OK");
     }
 
