@@ -84,7 +84,7 @@ namespace ECOllect.Models
                     new Promotion
                     {
                         Id = "1",
-                        Title = "10GB mobilnog internetaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                        Title = "10GB mobilnog interneta",
                         ImageUrl = "bhtelecom.png",
                         PointsCost = 100,
                         ValidUntil = DateTime.Now.AddMonths(1)

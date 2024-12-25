@@ -10,6 +10,7 @@ public class HomeViewModel : BaseViewModel
 {
     public ObservableCollection<CommunityAction> DisplayedActions { get; } = new();
     public ObservableCollection<Sponsor> Sponsors { get; } = new();
+    public ICommand NavigateToSponsorDetailCommand { get; }
 
     private readonly ObservableCollection<CommunityAction> _allActions;
     private int _currentIndex = 0;
@@ -66,9 +67,13 @@ public class HomeViewModel : BaseViewModel
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new PromotionDetailPage(promotion));
             }
-            else
+            
+        });
+        NavigateToSponsorDetailCommand = new Command<Sponsor>(async (sponsor) =>
+        {
+            if (sponsor != null)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Promotion data is missing!", "OK");
+                await Application.Current.MainPage.Navigation.PushAsync(new SponsorDetailPage(sponsor));
             }
         });
 
@@ -77,7 +82,10 @@ public class HomeViewModel : BaseViewModel
         DisplayedSponsors = new ObservableCollection<Sponsor>();
         LoadMoreSponsorsCommand = new Command(LoadMoreSponsors);
         LoadInitialSponsors();
+
+        
     }
+    
 
     private void LoadInitialItems() => LoadMoreItems();
 

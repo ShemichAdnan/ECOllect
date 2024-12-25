@@ -76,6 +76,9 @@
 	  <MauiXaml Update="Mvvm\Views\PromotionDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Mvvm\Views\SponsorDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 	
 </Project>

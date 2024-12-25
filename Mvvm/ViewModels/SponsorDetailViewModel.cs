@@ -5,14 +5,9 @@ using ECOllect.Views;
 
 namespace ECOllect.ViewModels;
 
-public class PromotionDetailViewModel : BaseViewModel
+public class SponsorDetailViewModel : BaseViewModel
 {
-    private Promotion _promotion;
-    public Promotion Promotion
-    {
-        get => _promotion;
-        set => SetProperty(ref _promotion, value);
-    }
+    
 
     private Sponsor _sponsor;
     public Sponsor Sponsor
@@ -21,39 +16,24 @@ public class PromotionDetailViewModel : BaseViewModel
         set => SetProperty(ref _sponsor, value);
     }
 
-    public string RelatedPromotionsTitle => $"Još od {Sponsor?.Name}";
+    public string RelatedPromotionsTitle => $"{Sponsor?.Name} Vam nudi";
 
     public ObservableCollection<Promotion> RelatedPromotions { get; } = new();
-
-    private int _userPoints = 18;//
-    public int UserPoints
-    {
-        get => _userPoints;
-        set => SetProperty(ref _userPoints, value);
-    }
-
     public ICommand GoBackCommand { get; }
-    public ICommand RedeemCommand { get; }
     public ICommand OpenPromotionCommand { get; }
 
-    public PromotionDetailViewModel(Promotion promotion)
+    public SponsorDetailViewModel(Sponsor sponsor)
     {
-        Promotion = promotion;
-        Sponsor = promotion.Sponsor;
+        Sponsor = sponsor;
         LoadRelatedPromotions();
 
         GoBackCommand = new Command(async () => await GoBack());
-        RedeemCommand = new Command(async () => await RedeemPromotion());
         OpenPromotionCommand = new Command<Promotion>(async (p) => await OpenPromotion(p));
     }
-
     private void LoadRelatedPromotions()
     {
-        var related = Sponsor.Promotions
-            .Where(p => p.Id != Promotion.Id)
-            .ToList();
-
-        foreach (var promotion in related)
+        
+        foreach (var promotion in Sponsor.Promotions)
         {
             RelatedPromotions.Add(promotion);
         }
@@ -64,14 +44,10 @@ public class PromotionDetailViewModel : BaseViewModel
         await Application.Current.MainPage.Navigation.PopAsync();
     }
 
-    private async Task RedeemPromotion()
-    {
-        await Application.Current.MainPage.DisplayAlert("Success", "Nagrada je preuzeta!", "OK");
-    }
+    
 
     private async Task OpenPromotion(Promotion promotion)
     {
         await Application.Current.MainPage.Navigation.PushAsync(new PromotionDetailPage(promotion));
     }
 }
-

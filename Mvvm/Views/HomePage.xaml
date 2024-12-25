@@ -291,6 +291,10 @@
 
                                         
                                         <Frame VerticalOptions="Center" Padding="10,5" Grid.Column="2" BorderColor="Transparent" BackgroundColor="#DEDEDE" CornerRadius="20">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=NavigateToSponsorDetailCommand}"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Frame.GestureRecognizers>
                                             <Label 
                                            Text="Pogledaj više"
                                            FontSize="12"
