@@ -5,6 +5,7 @@ namespace ECOllect.Services;
 
 public interface IDataService
 {
-    ObservableCollection<CommunityAction> GetActions();
-    ObservableCollection<Sponsor> GetSponsors();
+    
+    Task<User> LoginUser(string email, string password);
+    Task<bool> RegisterUser(User user, string password);
 }

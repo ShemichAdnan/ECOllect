@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECOllect.Views.ProfilePage"
+             Title="Profil">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Frame HeightRequest="120" 
+                   WidthRequest="120" 
+                   CornerRadius="60"
+                   IsClippedToBounds="True"
+                   Padding="0"
+                   BorderColor="Transparent"
+                   HorizontalOptions="Center">
+                <Image Source="{Binding UserImage}"
+                       Aspect="AspectFill"/>
+            </Frame>
+
+            <VerticalStackLayout Spacing="15">
+                <Label Text="{Binding FullName}"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+
+                <Frame BackgroundColor="#F2F2F2"
+                       Padding="15"
+                       BorderColor="Transparent"
+                       CornerRadius="10">
+                    <VerticalStackLayout Spacing="15">
+                        <VerticalStackLayout>
+                            <Label Text="Email"
+                                   TextColor="#666666"
+                                   FontSize="14"/>
+                            <Label Text="{Binding Email}"
+                                   FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout>
+                            <Label Text="Broj telefona"
+                                   TextColor="#666666"
+                                   FontSize="14"/>
+                            <Label Text="{Binding PhoneNumber}"
+                                   FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout>
+                            <Label Text="Adresa"
+                                   TextColor="#666666"
+                                   FontSize="14"/>
+                            <Label Text="{Binding Address}"
+                                   FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout>
+                            <Label Text="Uloga"
+                                   TextColor="#666666"
+                                   FontSize="14"/>
+                            <Label Text="{Binding UserRole}"
+                                   FontAttributes="Bold"/>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout IsVisible="{Binding IsNotOrganizer}">
+                            <Label Text="Bodovi"
+                                   TextColor="#666666"
+                                   FontSize="14"/>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="{Binding Points}"
+                                       FontAttributes="Bold"/>
+                                <Image Source="grayCoin.png"
+                                       HeightRequest="17"
+                                       WidthRequest="17"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+
+
+            <Button Text="Odjavi se"
+                    Command="{Binding LogoutCommand}"
+                    BackgroundColor="#262938"
+                    TextColor="White"
+                    CornerRadius="25"
+                    Margin="0,20,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

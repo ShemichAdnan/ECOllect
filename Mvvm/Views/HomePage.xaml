@@ -14,7 +14,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <HorizontalStackLayout >
+                <HorizontalStackLayout IsVisible="{Binding IsUser}">
                     <Image Source="medal.png" WidthRequest="17" HeightRequest="17"/>
                     <Label 
                         Text="Postani organizator!" 
@@ -24,10 +24,31 @@
                         FontAttributes="Bold"
                         Padding="5,0,0,0"
                         />
-
+                </HorizontalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding IsOrganizer}">
+                    <Image Source="medal.png" WidthRequest="17" HeightRequest="17"/>
+                    <Label 
+                        Text="Organizator!" 
+                        VerticalOptions="Center"
+                        FontSize="18"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Padding="5,0,0,0"
+                        />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding IsSponsor}">
+                    <Image Source="medal.png" WidthRequest="17" HeightRequest="17"/>
+                    <Label 
+                        Text="Sponzor!" 
+                        VerticalOptions="Center"
+                        FontSize="18"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Padding="5,0,0,0"
+                        />
                 </HorizontalStackLayout>
 
-                <HorizontalStackLayout Grid.Column="1" BackgroundColor="Transparent">
+                <HorizontalStackLayout Grid.Column="1" BackgroundColor="Transparent" IsVisible="{Binding IsUser}">
                     <Label 
                         Text="Istraži više"
                         TextColor="Black"
@@ -69,9 +90,9 @@
                     <Frame BackgroundColor="#F2F2F2" 
                            Padding="10,5"
                            BorderColor="Transparent"
-                           CornerRadius="20">
+                           CornerRadius="20" IsVisible="{Binding IsNotOrganizer}">
                         <HorizontalStackLayout Spacing="5" Padding="5,0">
-                            <Label Text="18" 
+                            <Label Text="{Binding UserPoints}" 
                                TextColor="#6C6C6C"
                                VerticalOptions="Center"
                                    FontAttributes="Bold"/>
@@ -87,7 +108,10 @@
                        HeightRequest="40"
                        WidthRequest="40"
                        IsClippedToBounds="True">
-                        <Image Source="profile_icon.png" 
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToProfileCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="{Binding UserImage}" 
                        Aspect="AspectFill"
                        HeightRequest="40" 
                        WidthRequest="40"

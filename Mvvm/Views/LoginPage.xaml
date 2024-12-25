@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECOllect.Views.LoginPage"
+             xmlns:viewmodel="clr-namespace:ECOllect.ViewModels">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" VerticalOptions="Center">
+            <Image Source="app_icon.png"
+                   HeightRequest="100"
+                   WidthRequest="100"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Dobrodošli nazad!"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+            <Entry Placeholder="Email"
+                   Text="{Binding Email}"
+                   Keyboard="Email"/>
+
+            <Entry Placeholder="Lozinka"
+                   Text="{Binding Password}"
+                   IsPassword="True"/>
+
+            <Button Text="Prijavi se"
+                    Command="{Binding LoginCommand}"
+                    BackgroundColor="#262938"
+                    TextColor="White"
+                    CornerRadius="25"/>
+
+            <Label Text="Nemate račun?"
+                   HorizontalOptions="Center"/>
+
+            <Button Text="Registruj se"
+                    Command="{Binding NavigateToRegisterCommand}"
+                    BackgroundColor="Transparent"
+                    TextColor="#262938"
+                    BorderColor="#262938"
+                    BorderWidth="1"
+                    CornerRadius="25"/>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                             IsVisible="{Binding IsBusy}"
+                             HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -45,6 +45,7 @@ public class HomeViewModel : BaseViewModel
         get => _isLoadMoreSponsorsVisible;
         set => SetProperty(ref _isLoadMoreSponsorsVisible, value);
     }
+    public ICommand NavigateToProfileCommand { get; }
 
     public HomeViewModel()
     {
@@ -82,8 +83,8 @@ public class HomeViewModel : BaseViewModel
         DisplayedSponsors = new ObservableCollection<Sponsor>();
         LoadMoreSponsorsCommand = new Command(LoadMoreSponsors);
         LoadInitialSponsors();
+        NavigateToProfileCommand = new Command(async () => await NavigateToProfile());
 
-        
     }
     
 
@@ -120,6 +121,18 @@ public class HomeViewModel : BaseViewModel
 
         _sponsorsCurrentIndex += SponsorsPerLoad;
         IsLoadMoreSponsorsVisible = _sponsorsCurrentIndex < _allSponsors.Count;
+    }
+    public string UserPoints => App.CurrentUser?.Points.ToString() ?? "0";
+    public string UserImage => App.CurrentUser?.ImageUrl ?? "profile_icon.png";
+    public bool IsNotOrganizer => App.CurrentUser?.Role != UserRole.Organizator;
+
+    public bool IsOrganizer => App.CurrentUser?.Role == UserRole.Organizator;
+    public bool IsUser => App.CurrentUser?.Role == UserRole.Korisnik;
+    public bool IsSponsor => App.CurrentUser?.Role == UserRole.Sponzor;
+
+    private async Task NavigateToProfile()
+    {
+        await Application.Current.MainPage.Navigation.PushAsync(new ProfilePage());
     }
 }
 

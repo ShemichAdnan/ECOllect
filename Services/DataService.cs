@@ -3,7 +3,7 @@ using ECOllect.Models;
 
 namespace ECOllect.Services;
 
-public class DataService : IDataService
+public class DataService 
 {
     public ObservableCollection<CommunityAction> GetActions() => SampleData.GetSampleActions();
     public ObservableCollection<Sponsor> GetSponsors() => SampleData.GetSampleSponsors();

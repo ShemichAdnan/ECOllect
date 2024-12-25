@@ -17,7 +17,7 @@ public static class MauiProgram
             });
 
         // Register services
-        builder.Services.AddSingleton<IDataService, DataService>();
+        
 
         // Register ViewModels
         builder.Services.AddTransient<HomeViewModel>();
