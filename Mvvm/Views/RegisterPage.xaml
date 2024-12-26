@@ -12,8 +12,8 @@
                    FontAttributes="Bold">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="ECO" TextColor="Black"/>
-                        <Span Text="llect" TextColor="#62F48E"/>
+                        <Span Text="ECO" TextColor="Black" FontAttributes="Bold"/>
+                        <Span Text="llect" TextColor="#62F48E" FontAttributes="Bold"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -30,7 +30,7 @@
                          VerticalOptions="Fill"/>
 
                 <VerticalStackLayout Grid.Column="1" Spacing="5">
-                    <Label Text="Pridruži nam se!"
+                    <Label Text="Pridružite nam se!"
                            FontSize="24"
                            FontAttributes="Bold"
                            TextColor="Black"/>

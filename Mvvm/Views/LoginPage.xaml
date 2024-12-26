@@ -2,48 +2,112 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ECOllect.Views.LoginPage"
-             xmlns:viewmodel="clr-namespace:ECOllect.ViewModels">
+             xmlns:viewmodel="clr-namespace:ECOllect.ViewModels"
+             BackgroundColor="White"
+            NavigationPage.HasNavigationBar="False">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-            <Image Source="app_icon.png"
-                   HeightRequest="100"
-                   WidthRequest="100"
-                   HorizontalOptions="Center"/>
+        <VerticalStackLayout Padding="20,40,20,20" Spacing="20">
+            <Frame CornerRadius="15"
+               HeightRequest="100" 
+                WidthRequest="100"
+                   BackgroundColor="#262938"
+                Grid.Column="0">
+                <Image Source="logo.png" 
+                    HeightRequest="100" 
+                    WidthRequest="100"/>
+            </Frame>
+            <Label FontSize="32" 
+           FontAttributes="Bold"
+                   HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="ECO" TextColor="Black" FontAttributes="Bold"/>
+                        <Span Text="llect" TextColor="#62F48E" FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
 
-            <Label Text="Dobrodošli nazad!"
+
+            <Grid ColumnSpacing="10" Margin="0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <BoxView Color="#62F48E" 
+                 WidthRequest="4" 
+                 VerticalOptions="Fill"/>
+
+                <VerticalStackLayout Grid.Column="1" Spacing="5">
+                    <Label Text="Dobrodošli nazad!"
                    FontSize="24"
                    FontAttributes="Bold"
-                   HorizontalOptions="Center"/>
+                   TextColor="Black"/>
+                    <Label Text="Prijavite se"
+                   FontSize="16"
+                   TextColor="#979797"/>
+                </VerticalStackLayout>
+            </Grid>
 
-            <Entry Placeholder="Email"
-                   Text="{Binding Email}"
-                   Keyboard="Email"/>
+            <VerticalStackLayout Spacing="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Email"
+                   TextColor="#979797"/>
+                    <Frame Padding="0"
+                   BorderColor="#E5E5E5"
+                   CornerRadius="8"
+                   HasShadow="False"
+                   BackgroundColor="Transparent">
+                        <Entry Text="{Binding Email}"
+                       Placeholder="Email"
+                       Keyboard="Email"
+                       Margin="15,0"
+                        TextColor="#94A3B8"
+                        PlaceholderColor="#94A3B8"/>
+                    </Frame>
+                </VerticalStackLayout>
 
-            <Entry Placeholder="Lozinka"
-                   Text="{Binding Password}"
-                   IsPassword="True"/>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Lozinka"
+                   TextColor="#979797"/>
+                    <Frame Padding="0"
+                   BorderColor="#E5E5E5"
+                   CornerRadius="8"
+                   HasShadow="False"
+                   BackgroundColor="Transparent">
+                        <Entry Text="{Binding Password}"
+                       Placeholder="Lozinka"
+                       IsPassword="True"
+                       Margin="15,0"
+                       TextColor="#94A3B8"
+                        PlaceholderColor="#94A3B8"/>
+                    </Frame>
+                </VerticalStackLayout>
+
+                
+            </VerticalStackLayout>
 
             <Button Text="Prijavi se"
-                    Command="{Binding LoginCommand}"
-                    BackgroundColor="#262938"
-                    TextColor="White"
-                    CornerRadius="25"/>
+            Command="{Binding LoginCommand}"
+            BackgroundColor="#62F48E"
+            TextColor="#202020"
+            
+            CornerRadius="10"
+            Margin="0,10,0,0"
+            Padding="30,10"
+            HorizontalOptions="Start"/>
 
-            <Label Text="Nemate račun?"
-                   HorizontalOptions="Center"/>
+            <Label Text="Nemaš račun?"
+               TextDecorations="Underline"
+               TextColor="#979797"
+               HorizontalOptions="Start">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToRegisterCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
 
-            <Button Text="Registruj se"
-                    Command="{Binding NavigateToRegisterCommand}"
-                    BackgroundColor="Transparent"
-                    TextColor="#262938"
-                    BorderColor="#262938"
-                    BorderWidth="1"
-                    CornerRadius="25"/>
-
-            <ActivityIndicator IsRunning="{Binding IsBusy}"
-                             IsVisible="{Binding IsBusy}"
-                             HorizontalOptions="Center"/>
         </VerticalStackLayout>
+        
     </ScrollView>
 </ContentPage>

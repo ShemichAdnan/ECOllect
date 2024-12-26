@@ -130,7 +130,7 @@
                    IsClippedToBounds="True"
                    Padding="0"
                    BorderColor="Transparent"
-                       BackgroundColor="Red">
+                       BackgroundColor="Transparent">
                     <Image Source="{Binding UserImage}"
                     Aspect="AspectFill"/>
                 </Frame>
@@ -294,7 +294,7 @@
                         </Grid.ColumnDefinitions>
 
                         <HorizontalStackLayout Grid.Column="0" Padding="15">
-                            <Image Source="phoneicon" WidthRequest="20" HeightRequest="20" Margin="2,0,10,0"/>
+                            <Image Source="addressicon" WidthRequest="20" HeightRequest="20" Margin="2,0,10,0"/>
                             <Label Text="{Binding Address}"
                                TextColor="#262938"
                                FontAttributes="Bold"

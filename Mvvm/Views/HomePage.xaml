@@ -80,7 +80,8 @@
                 <Frame CornerRadius="15"
                        HeightRequest="40" 
                         WidthRequest="40"
-                        Grid.Column="0">
+                        Grid.Column="0"
+                       BackgroundColor="#262938">
                     <Image Source="logo.png" 
                         HeightRequest="40" 
                         WidthRequest="40"/>
