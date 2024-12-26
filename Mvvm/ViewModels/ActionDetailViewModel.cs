@@ -1,4 +1,6 @@
+using System.Windows.Input;
 using ECOllect.Models;
+using ECOllect.Views;
 
 namespace ECOllect.ViewModels;
 
@@ -17,9 +19,17 @@ public class ActionDetailViewModel : BaseViewModel
     public int Prize => _action.Prize;
     public string Image => _action.Image;
     public bool HasJoined => _action.HasJoined;
-
+    public ICommand NavigateToProfileCommand { get; }
+    public string UserImage => App.CurrentUser?.ImageUrl;
+    public string Points => App.CurrentUser?.Points.ToString();
+    public bool IsNotOrganizer => App.CurrentUser.Role.ToString() != "Organizator";
     public ActionDetailViewModel(CommunityAction action)
     {
         _action = action ?? throw new ArgumentNullException(nameof(action));
+        NavigateToProfileCommand = new Command(async () => await NavigateToProfile());
+    }
+    private async Task NavigateToProfile()
+    {
+        await Application.Current.MainPage.Navigation.PushAsync(new ProfilePage());
     }
 }

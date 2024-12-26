@@ -25,17 +25,15 @@ public class PromotionDetailViewModel : BaseViewModel
 
     public ObservableCollection<Promotion> RelatedPromotions { get; } = new();
 
-    private int _userPoints = 18;//
-    public int UserPoints
-    {
-        get => _userPoints;
-        set => SetProperty(ref _userPoints, value);
-    }
 
     public ICommand GoBackCommand { get; }
     public ICommand RedeemCommand { get; }
     public ICommand OpenPromotionCommand { get; }
-
+    public string UserImage => App.CurrentUser?.ImageUrl;
+    public string Points => App.CurrentUser?.Points.ToString();
+    public ICommand NavigateToProfileCommand { get; }
+    public bool IsNotOrganizer => App.CurrentUser.Role.ToString() != "Organizator";
+    public bool IsUser => App.CurrentUser?.Role == UserRole.Korisnik;
     public PromotionDetailViewModel(Promotion promotion)
     {
         Promotion = promotion;
@@ -45,6 +43,7 @@ public class PromotionDetailViewModel : BaseViewModel
         GoBackCommand = new Command(async () => await GoBack());
         RedeemCommand = new Command(async () => await RedeemPromotion());
         OpenPromotionCommand = new Command<Promotion>(async (p) => await OpenPromotion(p));
+        NavigateToProfileCommand = new Command(async () => await NavigateToProfile());
     }
 
     private void LoadRelatedPromotions()
@@ -72,6 +71,10 @@ public class PromotionDetailViewModel : BaseViewModel
     private async Task OpenPromotion(Promotion promotion)
     {
         await Application.Current.MainPage.Navigation.PushAsync(new PromotionDetailPage(promotion));
+    }
+    private async Task NavigateToProfile()
+    {
+        await Application.Current.MainPage.Navigation.PushAsync(new ProfilePage());
     }
 }
 

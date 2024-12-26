@@ -6,9 +6,9 @@
              BackgroundColor="White">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="0">
+        <VerticalStackLayout>
 
-            <Grid BackgroundColor="#4CD964" Padding="16,40,16,20">
+            <Grid BackgroundColor="#62F48E" Padding="16,40,16,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -21,6 +21,7 @@
                    BackgroundColor="Transparent"
                    CornerRadius="20"
                    BorderColor="Transparent"
+                   WidthRequest="40"
                    >
                     <Image Source="blackback.png" HeightRequest="30"/>
                     <Frame.GestureRecognizers>
@@ -29,42 +30,46 @@
                 </Frame>
 
 
-                
+
                 <HorizontalStackLayout Grid.Column="2" Spacing="10">
                     <Frame BackgroundColor="Transparent" 
-                           Padding="10,5"
-                           BorderColor="black"
-                           CornerRadius="20">
+                        Padding="10,5"
+                        BorderColor="black"
+                        CornerRadius="20"
+                        IsVisible="{Binding IsNotOrganizer}">
                         <HorizontalStackLayout Spacing="5" Padding="5,0">
-                            <Label Text="18" 
-                               TextColor="Black"
-                               VerticalOptions="Center"
-                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding Points}" 
+                                TextColor="Black"
+                                VerticalOptions="Center"
+                                    FontAttributes="Bold"/>
                             <Image Source="blackcoin.png" 
-                           HeightRequest="17" 
-                           WidthRequest="17"
-                           VerticalOptions="Center"
-                                   />
+                                HeightRequest="17" 
+                                WidthRequest="17"
+                                VerticalOptions="Center"
+                                />
                         </HorizontalStackLayout>
                     </Frame>
                     <Frame Padding="0"
-                       BorderColor="Transparent"
-                       CornerRadius="20"
-                       HeightRequest="40"
-                       WidthRequest="40"
-                       IsClippedToBounds="True"
-                           BackgroundColor="Transparent">
-                        <Image Source="profile_icon.png" 
-                       Aspect="AspectFill"
-                       HeightRequest="40" 
-                       WidthRequest="40"
-                       BackgroundColor="Transparent"/>
+                        BorderColor="Transparent"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        IsClippedToBounds="True"
+                            BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToProfileCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="{Binding UserImage}" 
+                            Aspect="AspectFill"
+                            HeightRequest="40" 
+                            WidthRequest="40"
+                            BackgroundColor="Transparent"/>
                     </Frame>
                 </HorizontalStackLayout>
             </Grid>
 
 
-                <Grid Padding="16" BackgroundColor="#4CD964" >
+            <Grid Padding="16,16,16,40" BackgroundColor="#62F48E" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
@@ -126,7 +131,8 @@
                         Margin="0,20,0,10"
                         Grid.Row="2"
                         Grid.Column="0"
-                            WidthRequest="150"/>
+                            WidthRequest="150"
+                        IsVisible="{Binding IsUser}"/>
 
                 <Frame Margin="10"
                        Padding="0"
@@ -141,62 +147,67 @@
                         Aspect="AspectFill"/>
                 </Frame>
             </Grid>
+            <Frame BackgroundColor="White"
+                CornerRadius="20"
+                Padding="20"
+                Margin="0,-20,0,0"
+                BorderColor="White">
+                    <VerticalStackLayout Spacing="16">
+                    <Label Text="{Binding RelatedPromotionsTitle}"
+                           TextColor="#050505"
+                           FontSize="23"
+                           Margin="0,10"
+                           FontAttributes="Bold"/>
 
-            <VerticalStackLayout Padding="16" Spacing="16">
-                <Label Text="{Binding RelatedPromotionsTitle}"
-                       TextColor="#050505"
-                       FontSize="23"
-                       Margin="0,10"
-                       FontAttributes="Bold"/>
 
+                    <CollectionView ItemsSource="{Binding RelatedPromotions}"
+                                  ItemsLayout="VerticalGrid, 2">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="4"
+                                       Padding="0"
+                                       BorderColor="Transparent"
+                                       BackgroundColor="#F8F8F8"
+                                       CornerRadius="8">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenPromotionCommand}"
+                                              CommandParameter="{Binding}" />
+                                    </Frame.GestureRecognizers>
 
-                <CollectionView ItemsSource="{Binding RelatedPromotions}"
-                              ItemsLayout="VerticalGrid, 2">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame Margin="4"
-                                   Padding="0"
-                                   BorderColor="Transparent"
-                                   BackgroundColor="White"
-                                   CornerRadius="8">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenPromotionCommand}"
-                                          CommandParameter="{Binding}" />
-                                </Frame.GestureRecognizers>
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="120"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
 
-                                <Grid RowSpacing="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="120"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
+                                        <Image Source="{Binding ImageUrl}"
+                                               Aspect="AspectFill"
+                                               HeightRequest="120"/>
 
-                                    <Image Source="{Binding ImageUrl}"
-                                           Aspect="AspectFill"
-                                           HeightRequest="120"/>
-
-                                    <VerticalStackLayout Grid.Row="1" 
-                                                       Padding="8"
-                                                       Spacing="4">
-                                        <Label Text="{Binding Title}"
-                                               TextColor="Black"
-                                               FontSize="14"
-                                               LineBreakMode="TailTruncation"
-                                                MaxLines="1"/>
-                                        <HorizontalStackLayout Spacing="4">
-                                            <Label Text="{Binding PointsCost}"
+                                        <VerticalStackLayout Grid.Row="1" 
+                                                           Padding="8"
+                                                           Spacing="4">
+                                            <Label Text="{Binding Title}"
                                                    TextColor="Black"
-                                                   FontSize="14"/>
-                                            <Image Source="blackcoin.png"
-                                                   HeightRequest="14"
-                                                   WidthRequest="14"/>
-                                        </HorizontalStackLayout>
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
+                                                   FontSize="14"
+                                                   LineBreakMode="TailTruncation"
+                                                    MaxLines="1"/>
+                                            <HorizontalStackLayout Spacing="4">
+                                                <Label Text="{Binding PointsCost}"
+                                                       TextColor="Black"
+                                                       FontSize="14"/>
+                                                <Image Source="blackcoin.png"
+                                                       HeightRequest="14"
+                                                       WidthRequest="14"/>
+                                            </HorizontalStackLayout>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

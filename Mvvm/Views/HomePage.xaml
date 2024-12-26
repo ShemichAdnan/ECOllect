@@ -8,7 +8,7 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="10">
-            <Grid BackgroundColor="#7CFA93" Padding="16,40,16,26">
+            <Grid BackgroundColor="#62F48E" Padding="16,40,16,26">
                 <Grid.ColumnDefinitions>
 
                     <ColumnDefinition Width="*"/>
@@ -92,7 +92,7 @@
                            BorderColor="Transparent"
                            CornerRadius="20" IsVisible="{Binding IsNotOrganizer}">
                         <HorizontalStackLayout Spacing="5" Padding="5,0">
-                            <Label Text="{Binding UserPoints}" 
+                            <Label Text="{Binding Points}" 
                                TextColor="#6C6C6C"
                                VerticalOptions="Center"
                                    FontAttributes="Bold"/>
@@ -245,7 +245,7 @@
                                                 />
                                             <Image Source="share.png" WidthRequest="15"/>
                                         </HorizontalStackLayout>
-                                        <Frame Padding="10,0,10,0" Grid.Row="2" Grid.Column="3" BorderColor="Transparent" BackgroundColor="#7CFA93" CornerRadius="20">
+                                        <Frame Padding="10,0,10,0" Grid.Row="2" Grid.Column="3" BorderColor="Transparent" BackgroundColor="#62F48E" CornerRadius="20">
                                             <HorizontalStackLayout>
                                                 <Label 
                                                     Text="Pristupi"
@@ -273,10 +273,10 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame Margin="0,0,0,16" 
-                       Padding="0"
-                       BorderColor="Transparent"
-                       BackgroundColor="white"
-                       CornerRadius="12">
+                               Padding="0"
+                               BorderColor="Transparent"
+                               BackgroundColor="white"
+                               CornerRadius="12">
                                 <VerticalStackLayout Spacing="12">
                                     
                                     <Grid ColumnSpacing="12" BackgroundColor="#F3F3F3" Padding="16,10">

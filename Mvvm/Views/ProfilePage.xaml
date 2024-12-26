@@ -2,88 +2,354 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ECOllect.Views.ProfilePage"
-             Title="Profil">
-
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
-            <Frame HeightRequest="120" 
-                   WidthRequest="120" 
-                   CornerRadius="60"
+        <VerticalStackLayout Spacing="10">
+            <Grid BackgroundColor="#62F48E" Padding="16,40,16,26">
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <HorizontalStackLayout IsVisible="{Binding IsUser}">
+                    <Image Source="medal.png" WidthRequest="17" HeightRequest="17"/>
+                    <Label 
+                        Text="Postani organizator!" 
+                        VerticalOptions="Center"
+                        FontSize="18"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Padding="5,0,0,0"
+                        />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding IsOrganizer}">
+                    <Image Source="medal.png" WidthRequest="17" HeightRequest="17"/>
+                    <Label 
+                        Text="Organizator!" 
+                        VerticalOptions="Center"
+                        FontSize="18"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Padding="5,0,0,0"
+                        />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout IsVisible="{Binding IsSponsor}">
+                    <Image Source="medal.png" WidthRequest="17" HeightRequest="17"/>
+                    <Label 
+                        Text="Sponzor!" 
+                        VerticalOptions="Center"
+                        FontSize="18"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Padding="5,0,0,0"
+                        />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Grid.Column="1" BackgroundColor="Transparent" IsVisible="{Binding IsUser}">
+                    <Label 
+                        Text="Istraži više"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        TextDecorations="Underline">
+                    </Label>
+                    <Label Text="→"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       FontSize="23"
+                       Padding="-2,-8,0,0">
+
+                    </Label>
+
+                </HorizontalStackLayout>
+
+            </Grid>
+
+            <Grid Padding="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Frame Grid.Column="0"
+                    Padding="-8,0,0,0" 
+                   BackgroundColor="Transparent"
+                   CornerRadius="20"
+                   BorderColor="Transparent"
+                   WidthRequest="40"
+                   >
+                    <Image Source="blackback.png" HeightRequest="30"/>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <HorizontalStackLayout Grid.Column="2" Spacing="10">
+                    <Frame BackgroundColor="#F2F2F2" 
+                       Padding="10,5"
+                       BorderColor="Transparent"
+                       CornerRadius="20" IsVisible="{Binding IsNotOrganizer}">  
+                        <HorizontalStackLayout Spacing="5" Padding="5,0">
+                            <Label Text="{Binding Points}" 
+                               TextColor="#6C6C6C"
+                               VerticalOptions="Center"
+                                   FontAttributes="Bold"/>
+                            <Image Source="grayCoin.png" 
+                               HeightRequest="17" 
+                               WidthRequest="17"
+                               VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+                    <Frame Padding="0"
+                       BorderColor="Transparent"
+                       CornerRadius="20"
+                       HeightRequest="40"
+                       WidthRequest="40"
+                       IsClippedToBounds="True">
+
+                        <Image Source="{Binding UserImage}" 
+                           Aspect="AspectFill"
+                           HeightRequest="40" 
+                           WidthRequest="40"
+                           BackgroundColor="white"/>
+                    </Frame>
+                </HorizontalStackLayout>
+            </Grid>
+            <Label HeightRequest="1" BackgroundColor="#DFDFDF"/>
+            <Grid Padding="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Frame HeightRequest="100" Grid.Column="0"
+                   WidthRequest="100"
+                   CornerRadius="20"
                    IsClippedToBounds="True"
                    Padding="0"
                    BorderColor="Transparent"
-                   HorizontalOptions="Center">
-                <Image Source="{Binding UserImage}"
-                       Aspect="AspectFill"/>
-            </Frame>
-
-            <VerticalStackLayout Spacing="15">
-                <Label Text="{Binding FullName}"
-                       FontSize="24"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center"/>
-
-                <Frame BackgroundColor="#F2F2F2"
-                       Padding="15"
-                       BorderColor="Transparent"
-                       CornerRadius="10">
-                    <VerticalStackLayout Spacing="15">
-                        <VerticalStackLayout>
-                            <Label Text="Email"
-                                   TextColor="#666666"
-                                   FontSize="14"/>
-                            <Label Text="{Binding Email}"
-                                   FontAttributes="Bold"/>
-                        </VerticalStackLayout>
-
-                        <VerticalStackLayout>
-                            <Label Text="Broj telefona"
-                                   TextColor="#666666"
-                                   FontSize="14"/>
-                            <Label Text="{Binding PhoneNumber}"
-                                   FontAttributes="Bold"/>
-                        </VerticalStackLayout>
-
-                        <VerticalStackLayout>
-                            <Label Text="Adresa"
-                                   TextColor="#666666"
-                                   FontSize="14"/>
-                            <Label Text="{Binding Address}"
-                                   FontAttributes="Bold"/>
-                        </VerticalStackLayout>
-
-                        <VerticalStackLayout>
-                            <Label Text="Uloga"
-                                   TextColor="#666666"
-                                   FontSize="14"/>
-                            <Label Text="{Binding UserRole}"
-                                   FontAttributes="Bold"/>
-                        </VerticalStackLayout>
-
-                        <VerticalStackLayout IsVisible="{Binding IsNotOrganizer}">
-                            <Label Text="Bodovi"
-                                   TextColor="#666666"
-                                   FontSize="14"/>
-                            <HorizontalStackLayout Spacing="5">
-                                <Label Text="{Binding Points}"
-                                       FontAttributes="Bold"/>
-                                <Image Source="grayCoin.png"
-                                       HeightRequest="17"
-                                       WidthRequest="17"
-                                       VerticalOptions="Center"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
-                    </VerticalStackLayout>
+                       BackgroundColor="Red">
+                    <Image Source="{Binding UserImage}"
+                    Aspect="AspectFill"/>
                 </Frame>
+                <Grid Grid.Column="1" HorizontalOptions="Start" Padding="20,0,0,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding FullName}"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                           TextColor="#393939"
+                           Grid.Row="0"
+                           Padding="0,5,0,0"/>
+                    <Label Text="{Binding CreatedAtFormatted}"
+                       TextColor="#979797"
+                        Grid.Row="1"
+                           FontSize="15"
+                           FontAttributes="Bold"/>
+                    <HorizontalStackLayout  Spacing="10" Grid.Row="2" VerticalOptions="End">
+                        <Button Text="Prijavi grešku"
+                            Command="{Binding ReportErrorCommand}"
+                            BackgroundColor="#262938"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="20"
+                            Padding="13,0"
+                            HeightRequest="35"
+                            FontSize="14"/>
+                        <Button Text="Odjavi se"
+                            Command="{Binding LogoutCommand}"
+                            BackgroundColor="#F3F3F3"
+                            TextColor="#262938"
+                            FontAttributes="Bold"
+                            CornerRadius="20"
+                            Padding="13,0"
+                            HeightRequest="35"
+                            FontSize="14"/>
+                    </HorizontalStackLayout>
+                </Grid>
+            </Grid>
+            <VerticalStackLayout Padding="16,0">
+                <Label Text="Osnovno"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   TextColor="#050505"/>
+                <Label Text="Ime i prezime"
+                   TextColor="#9c9c9c"
+                   FontSize="14"
+                       Margin="0,10,0,5"/>
+                <Frame BackgroundColor="#f3f3f3"
+                   Padding="15"
+                   BorderColor="Transparent"
+                   CornerRadius="8">
+                    <HorizontalStackLayout>
+                        <Image Source="usericon" WidthRequest="20" HeightRequest="20" Margin="2,0,10,0"/>
+                        <Label Text="{Binding FullName}"
+                           TextColor="#262938"
+                           FontAttributes="Bold"
+                               FontSize="16"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                <Label Text="Uloga"
+                   TextColor="#9c9c9c"
+                   FontSize="14"
+                       Margin="0,10,0,5"/>
+                <Frame BackgroundColor="#f3f3f3"
+                   Padding="15"
+                   BorderColor="Transparent"
+                   CornerRadius="8">
+                    <HorizontalStackLayout>
+                        <Image Source="roleicon" WidthRequest="20" HeightRequest="20" Margin="2,0,10,0"/>
+                        <Label Text="{Binding UserRole}"
+                       TextColor="#262938"
+                       FontAttributes="Bold"
+                           FontSize="16"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+            
+
+            <VerticalStackLayout Padding="16,36,16,16">
+                <Label Text="Ostali podaci"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   TextColor="#050505"/>        
+                <Label Text="Email adresa"
+                   TextColor="#9c9c9c"
+                   FontSize="14"
+                       Margin="0,10,0,5"/>
+                <Frame BackgroundColor="#f3f3f3"
+                   Padding="0"
+                   BorderColor="Transparent"
+                   CornerRadius="8">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <HorizontalStackLayout Grid.Column="0" Padding="15">
+                            <Image Source="emailicon" WidthRequest="20" HeightRequest="20" Margin="2,0,10,0"/>
+                            <Label Text="{Binding Email}"
+                               TextColor="#262938"
+                               FontAttributes="Bold"
+                                   FontSize="16"/>
+                        </HorizontalStackLayout>
+                        <Frame Grid.Column="1" HorizontalOptions="End" WidthRequest="30" HeightRequest="30" Margin="0,0,7,0" BackgroundColor="#dedede" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EditEmailCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="editicon" WidthRequest="15" HeightRequest="15"/>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <Label Text="Broj telefona"
+                   TextColor="#9c9c9c"
+                   FontSize="14"
+                       Margin="0,10,0,5"/>
+                <Frame BackgroundColor="#f3f3f3"
+                   Padding="0"
+                   BorderColor="Transparent"
+                   CornerRadius="8">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <HorizontalStackLayout Grid.Column="0" Padding="15">
+                            <Image Source="phoneicon" WidthRequest="20" HeightRequest="20" Margin="2,0,10,0"/>
+                            <Label Text="{Binding PhoneNumber}"
+                               TextColor="#262938"
+                               FontAttributes="Bold"
+                                   FontSize="16"/>
+                        </HorizontalStackLayout>
+                        <Frame Grid.Column="1" HorizontalOptions="End" WidthRequest="30" HeightRequest="30" Margin="0,0,7,0" BackgroundColor="#dedede" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EditPhoneCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="editicon" WidthRequest="15" HeightRequest="15"/>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <Label Text="Adresa"
+                   TextColor="#9c9c9c"
+                   FontSize="14"
+                   Margin="0,10,0,5"/>
+                <Frame BackgroundColor="#f3f3f3"
+                   Padding="0"
+                   BorderColor="Transparent"
+                   CornerRadius="8">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <HorizontalStackLayout Grid.Column="0" Padding="15">
+                            <Image Source="phoneicon" WidthRequest="20" HeightRequest="20" Margin="2,0,10,0"/>
+                            <Label Text="{Binding Address}"
+                               TextColor="#262938"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+                        </HorizontalStackLayout>
+                        <Frame Grid.Column="1" HorizontalOptions="End" WidthRequest="30" HeightRequest="30" Margin="0,0,7,0" BackgroundColor="#dedede" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EditAddressCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="editicon" WidthRequest="15" HeightRequest="15"/>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+
             </VerticalStackLayout>
 
 
-            <Button Text="Odjavi se"
-                    Command="{Binding LogoutCommand}"
-                    BackgroundColor="#262938"
-                    TextColor="White"
-                    CornerRadius="25"
-                    Margin="0,20,0,0"/>
+            <!--<VerticalStackLayout Spacing="20" Padding="20">
+                
+                
+
+                
+                
+                    
+
+                
+                <VerticalStackLayout Spacing="10">
+                    
+
+                    
+
+                    <Label Text="Adresa"
+                           TextColor="#666666"
+                           FontSize="14"/>
+                    <Frame BackgroundColor="#F8F8F8"
+                           Padding="15"
+                           BorderColor="Transparent"
+                           CornerRadius="8">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="{Binding Address}"/>
+                            <Image Grid.Column="1"
+                                   Source="editicon.png"
+                                   HeightRequest="20"
+                                   WidthRequest="20">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EditAddressCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </Frame>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        
+            </Grid>-->
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

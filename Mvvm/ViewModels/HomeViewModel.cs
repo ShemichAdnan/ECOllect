@@ -122,7 +122,7 @@ public class HomeViewModel : BaseViewModel
         _sponsorsCurrentIndex += SponsorsPerLoad;
         IsLoadMoreSponsorsVisible = _sponsorsCurrentIndex < _allSponsors.Count;
     }
-    public string UserPoints => App.CurrentUser?.Points.ToString() ?? "0";
+    public string Points => App.CurrentUser?.Points.ToString() ?? "0";
     public string UserImage => App.CurrentUser?.ImageUrl ?? "profile_icon.png";
     public bool IsNotOrganizer => App.CurrentUser?.Role != UserRole.Organizator;
 

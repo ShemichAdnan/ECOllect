@@ -53,9 +53,10 @@
                         <Frame BackgroundColor="Transparent" 
                            Padding="10,5"
                            BorderColor="white"
-                           CornerRadius="20">
+                           CornerRadius="20"
+                               IsVisible="{Binding IsNotOrganizer}">
                             <HorizontalStackLayout Spacing="5" Padding="5,0">
-                                <Label Text="18" 
+                                <Label Text="{Binding Points}" 
                                    TextColor="white"
                                    VerticalOptions="Center"
                                    FontAttributes="Bold"/>
@@ -73,7 +74,10 @@
                            WidthRequest="40"
                            IsClippedToBounds="True"
                            BackgroundColor="Transparent">
-                            <Image Source="profile_icon.png" 
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateToProfileCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="{Binding UserImage}" 
                                Aspect="AspectFill"
                                HeightRequest="40" 
                                WidthRequest="40"

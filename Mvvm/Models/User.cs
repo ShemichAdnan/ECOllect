@@ -10,6 +10,7 @@ public class User
     public string ImageUrl { get; set; } = "profile_icon.png";
     public int Points { get; set; } = 0;
     public UserRole Role { get; set; } = UserRole.Korisnik;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 }
 
 public enum UserRole
