@@ -1,4 +1,5 @@
-﻿using ECOllect.Services;
+﻿using ECOllect.Database;
+using ECOllect.Services;
 using ECOllect.ViewModels;
 
 namespace ECOllect;
@@ -16,7 +17,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-
+        DatabaseService.InitializeDatabase();
 
         builder.Services.AddTransient<HomeViewModel>();
         builder.Services.AddTransient<ActionDetailViewModel>();

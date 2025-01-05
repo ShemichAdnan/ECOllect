@@ -1,3 +1,4 @@
+using ECOllect.Mvvm.ViewModels;
 using ECOllect.ViewModels;
 using ECOllect.Services;
 namespace ECOllect.Views;

@@ -1,4 +1,6 @@
 using ECOllect.Models;
+using ECOllect.Mvvm.Models;
+
 namespace ECOllect.Services;
 
 public class MockDataService : IDataService 

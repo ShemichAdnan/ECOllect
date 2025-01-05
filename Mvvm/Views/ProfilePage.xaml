@@ -146,7 +146,7 @@
                            TextColor="#393939"
                            Grid.Row="0"
                            Padding="0,5,0,0"/>
-                    <Label Text="{Binding CreatedAtFormatted}"
+                    <Label Text="05.01.2025."
                        TextColor="#979797"
                         Grid.Row="1"
                            FontSize="15"

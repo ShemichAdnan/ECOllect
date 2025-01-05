@@ -1,77 +1,78 @@
-﻿using System.Windows.Input;
-using ECOllect.Models;
+
+using ECOllect.Database;
+using ECOllect.Mvvm.Models;
+using System;
+using System.Windows.Input;
 using ECOllect.Services;
+using ECOllect.ViewModels;
+using ECOllect.Views;
+using User = ECOllect.Database.User;
 
-namespace ECOllect.ViewModels;
-
-public class RegisterPageViewModel : BaseViewModel
+namespace ECOllect.Mvvm.ViewModels
 {
-    private readonly IDataService _dataService;
-
-    private string _firstName;
-    private string _lastName;
-    private string _email;
-    private string _phoneNumber;
-    private string _address;
-    private string _password;
-    private string _confirmPassword;
-
-    public string FirstName
+    public class RegisterPageViewModel : BaseViewModel
     {
-        get => _firstName;
-        set => SetProperty(ref _firstName, value);
-    }
+        private string _firstName;
+        private string _lastName;
+        private string _email;
+        private string _phoneNumber;
+        private string _address;
+        private string _password;
+        private string _confirmPassword;
 
-    public string LastName
-    {
-        get => _lastName;
-        set => SetProperty(ref _lastName, value);
-    }
+        public string FirstName
+        {
+            get => _firstName;
+            set => SetProperty(ref _firstName, value);
+        }
 
-    public string Email
-    {
-        get => _email;
-        set => SetProperty(ref _email, value);
-    }
+        public string LastName
+        {
+            get => _lastName;
+            set => SetProperty(ref _lastName, value);
+        }
 
-    public string PhoneNumber
-    {
-        get => _phoneNumber;
-        set => SetProperty(ref _phoneNumber, value);
-    }
+        public string Email
+        {
+            get => _email;
+            set => SetProperty(ref _email, value);
+        }
 
-    public string Address
-    {
-        get => _address;
-        set => SetProperty(ref _address, value);
-    }
+        public string PhoneNumber
+        {
+            get => _phoneNumber;
+            set => SetProperty(ref _phoneNumber, value);
+        }
 
-    public string Password
-    {
-        get => _password;
-        set => SetProperty(ref _password, value);
-    }
+        public string Address
+        {
+            get => _address;
+            set => SetProperty(ref _address, value);
+        }
 
-    public string ConfirmPassword
-    {
-        get => _confirmPassword;
-        set => SetProperty(ref _confirmPassword, value);
-    }
+        public string Password
+        {
+            get => _password;
+            set => SetProperty(ref _password, value);
+        }
 
-    public ICommand RegisterCommand { get; }
-    public ICommand BackToLoginCommand { get; }
+        public string ConfirmPassword
+        {
+            get => _confirmPassword;
+            set => SetProperty(ref _confirmPassword, value);
+        }
 
-    public RegisterPageViewModel(IDataService dataService)
-    {
-        _dataService = dataService;
-        RegisterCommand = new Command(async () => await RegisterAsync());
-        BackToLoginCommand = new Command(async () => await BackToLogin());
-    }
+        public ICommand RegisterCommand { get; }
+        public ICommand BackToLoginCommand { get; }
 
-    private async Task RegisterAsync()
-    {
-        
-        
+        public RegisterPageViewModel(MockDataService mockDataService)
+        {
+            RegisterCommand = new Command(async () => await RegisterAsync());
+            BackToLoginCommand = new Command(async () => await NavigateToLogin());
+        }
+
+        private async Task RegisterAsync()
+        {
             if (string.IsNullOrWhiteSpace(Email) ||
                 string.IsNullOrWhiteSpace(Password) ||
                 string.IsNullOrWhiteSpace(ConfirmPassword) ||
@@ -83,7 +84,7 @@ public class RegisterPageViewModel : BaseViewModel
                 await Application.Current.MainPage.DisplayAlert("Greška", "Molimo popunite sva polja", "OK");
                 return;
             }
-
+            
             if (Password != ConfirmPassword)
             {
                 await Application.Current.MainPage.DisplayAlert("Greška", "Lozinke se ne podudaraju", "OK");
@@ -96,25 +97,28 @@ public class RegisterPageViewModel : BaseViewModel
                 FirstName = FirstName,
                 LastName = LastName,
                 PhoneNumber = PhoneNumber,
-                Address = Address
+                Address = Address,
+                Password = Password
             };
 
-            var success = await _dataService.RegisterUser(user, Password);
-            if (success)
+            using var connection = DatabaseService.GetConnection();
+            
+            var existingUser = connection.Table<User>().FirstOrDefault(u => u.Email == Email);
+            if (existingUser != null)
             {
-                await Application.Current.MainPage.DisplayAlert("Uspješno", "Registracija uspješna", "OK");
-                await Application.Current.MainPage.Navigation.PopAsync();
+                await Application.Current.MainPage.DisplayAlert("Greška", "Taj email je vec registrovan", "OK");
+                return;
             }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Greška", "Email već postoji", "OK");
-            }
-        
-        
-    }
+            
+            connection.Insert(user);
 
-    private async Task BackToLogin()
-    {
-        await Application.Current.MainPage.Navigation.PopAsync();
+            await Application.Current.MainPage.DisplayAlert("Uspješno", "Registracija uspješna", "OK");
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
+        
+        private async Task NavigateToLogin()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
+        }
     }
 }

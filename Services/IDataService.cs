@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using ECOllect.Models;
+using ECOllect.Mvvm.Models;
 
 namespace ECOllect.Services;
 

@@ -13,7 +13,6 @@ public class ProfileViewModel : BaseViewModel
     public string Address => App.CurrentUser?.Address;
     public string Points => App.CurrentUser?.Points.ToString();
     public string UserRole => App.CurrentUser?.Role.ToString();
-    public string CreatedAtFormatted => App.CurrentUser?.CreatedAt.ToString("dd.MM.yyyy.");
     public bool IsNotOrganizer => App.CurrentUser.Role.ToString() != "Organizator";
 
     public ICommand LogoutCommand { get; }
