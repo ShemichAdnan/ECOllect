@@ -136,7 +136,7 @@
 
                 </Grid>
 
-                <Label Text="Nedavne akcije"  TextColor="#9C9C9C" FontSize="Medium"/>
+                <Label Text="Trenutne akcije"  TextColor="#9C9C9C" FontSize="Medium"/>
 
                 <CollectionView ItemsSource="{Binding DisplayedActions}">
                     <CollectionView.ItemTemplate>
@@ -162,7 +162,7 @@
                                                BackgroundColor="#F3F3F3"
                                                BorderColor="Transparent"
                                                CornerRadius="15">
-                                            <Image Source="{Binding Image}"/>
+                                            <Image Source="{Binding Image}" Aspect="AspectFill"/>
                                         </Frame>
 
                                         <VerticalStackLayout Grid.Column="1" Margin="10,0">
@@ -217,7 +217,7 @@
                                                 WidthRequest="75"
                                                BackgroundColor="#F3F3F3"
                                                BorderColor="Transparent">
-                                            <Image Source="{Binding Image}"/>
+                                            <Image Source="{Binding Image}" Aspect="AspectFill"/>
                                         </Frame>
 
                                         <HorizontalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="End"  BackgroundColor="#F3F3F3" Padding="0,0,10,0" Spacing="5">

@@ -18,6 +18,8 @@ namespace ECOllect.Database
         {
             using var connection = GetConnection();
             connection.CreateTable<User>(CreateFlags.None);
+
+
         }
     }
 

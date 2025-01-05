@@ -9,31 +9,29 @@ public class MockDataService : IDataService
     {
         new User
         {
-            Email = "sapa@gmail.com",
+            Email = "sapaaaaaaaaaaa@gmail.com",
             FirstName = "Ahmed",
             LastName = "Spahic",
             Address = "Krivace",
             PhoneNumber = "123456789",
             Points=30,
-            ImageUrl="salcinovic.png",
             Role = UserRole.Korisnik
         },
         new User
         {
-            Email = "sema@gmail.com",
+            Email = "semaaaaaaaaaaaaa@gmail.com",
             FirstName = "Adnan",
             LastName = "Semic",
             Address = "Plandiste 120",
             PhoneNumber = "123456789",
-            ImageUrl="salcinovic.png",
             Role = UserRole.Organizator
         }
     };
 
     private static Dictionary<string, string> _passwords = new Dictionary<string, string>
     {
-        { "sapa@gmail.com", "sapa123" },
-        { "sema@gmail.com", "sema123" }
+        { "sapaaaaaaaaaaa@gmail.com", "sapa123" },
+        { "semaaaaaaaaaaaaa@gmail.com", "sema123" }
     };
 
     
