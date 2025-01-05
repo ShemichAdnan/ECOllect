@@ -84,10 +84,33 @@ namespace ECOllect.Mvvm.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Greška", "Molimo popunite sva polja", "OK");
                 return;
             }
-            
+
+            // Regex checks for input fields
+
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(Email, emailPattern))
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Email nije validan", "OK");
+                return;
+            }
+
+            string passwordPattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
+            if (!Regex.IsMatch(Password, passwordPattern))
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Lozinka mora imati najmanje 8 karaktera, jedno slovo, jedan broj i jedan specijalni znak", "OK");
+                return;
+            }
+
             if (Password != ConfirmPassword)
             {
                 await Application.Current.MainPage.DisplayAlert("Greška", "Lozinke se ne podudaraju", "OK");
+                return;
+            }
+
+            string phonePattern = @"^\+?[1-9]\d{1,14}$";
+            if (!Regex.IsMatch(PhoneNumber, phonePattern))
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Broj telefona nije validan", "OK");
                 return;
             }
 
@@ -100,6 +123,7 @@ namespace ECOllect.Mvvm.ViewModels
                 Address = Address,
                 Password = Password
             };
+
 
             using var connection = DatabaseService.GetConnection();
             
