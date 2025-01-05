@@ -15,6 +15,28 @@ public class ProfileViewModel : BaseViewModel
     public string UserRole => App.CurrentUser?.Role.ToString();
     public bool IsNotOrganizer => App.CurrentUser.Role.ToString() != "Organizator";
 
+    private string _email;
+    private string _phoneNumber;
+    private string _address;
+    
+    public string NewEmail
+    {
+        get => _email;
+        set => SetProperty(ref _email, value);
+    }
+
+    public string NewPhoneNumber
+    {
+        get => _phoneNumber;
+        set => SetProperty(ref _phoneNumber, value);
+    }
+
+    public string NewAddress
+    {
+        get => _address;
+        set => SetProperty(ref _address, value);
+    }
+
     public ICommand LogoutCommand { get; }
     public ICommand GoBackCommand { get; }
     public ICommand ReportErrorCommand { get; }
@@ -56,36 +78,89 @@ public class ProfileViewModel : BaseViewModel
 
     private async Task ReportErrorAsync()
     {
-        await Application.Current.MainPage.DisplayAlert(
-            "Prijava greške",
-            "Ova funkcionalnost će biti dostupna uskoro.",
-            "OK");
+        await Application.Current.MainPage.DisplayAlert("Report Error", "Prijavio si problem, kolege koje ovo upravo gledaju će ga riješiti :D.", "OK");
     }
 
     private async Task EditEmailAsync()
     {
-        // Implement email editing functionality
-        await Application.Current.MainPage.DisplayAlert(
-            "Uredi email",
-            "Ova funkcionalnost će biti dostupna uskoro.",
-            "OK");
+        if (string.IsNullOrWhiteSpace(NewEmail))
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "Email ne može biti prazan.", "OK");
+            return;
+        }
+
+        string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        if (!Regex.IsMatch(NewEmail, emailPattern))
+        {
+            await Application.Current.MainPage.DisplayAlert("Greška", "Email nije validan", "OK");
+            return;
+        }
+
+        using var connection = DatabaseService.GetConnection();
+        var user = connection.Table<User>().FirstOrDefault(u => u.Id == App.CurrentUser.Id);
+
+        if (user != null)
+        {
+            user.Email = NewEmail;
+            connection.Update(user);
+            await Application.Current.MainPage.DisplayAlert("Success", "Email uspješno ažuriran", "OK");
+        }
+        else
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "Korisnik nije pronadjen", "OK");
+        }
     }
 
     private async Task EditPhoneAsync()
     {
-        // Implement phone editing functionality
-        await Application.Current.MainPage.DisplayAlert(
-            "Uredi telefon",
-            "Ova funkcionalnost će biti dostupna uskoro.",
-            "OK");
+        if (string.IsNullOrWhiteSpace(NewPhoneNumber))
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "Broj telefona ne smije biti prazan", "OK");
+            return;
+        }
+
+        string phonePattern = @"^\+?[1-9]\d{1,14}$";
+        if (!Regex.IsMatch(NewPhoneNumber, phonePattern))
+        {
+            await Application.Current.MainPage.DisplayAlert("Greška", "Broj telefona nije validan", "OK");
+            return;
+        }
+
+        using var connection = DatabaseService.GetConnection();
+        var user = connection.Table<User>().FirstOrDefault(u => u.Id == App.CurrentUser.Id);
+
+        if (user != null)
+        {
+            user.PhoneNumber = NewPhoneNumber;
+            connection.Update(user);
+            await Application.Current.MainPage.DisplayAlert("Success", "Broj telefona uspjesno azuriran", "OK");
+        }
+        else
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "Korisnik nije pronadjen", "OK");
+        }
     }
 
     private async Task EditAddressAsync()
     {
-        // Implement address editing functionality
-        await Application.Current.MainPage.DisplayAlert(
-            "Uredi adresu",
-            "Ova funkcionalnost će biti dostupna uskoro.",
-            "OK");
+        if (string.IsNullOrWhiteSpace(Address))
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "Adresa ne moze biti prazna", "OK");
+            return;
+        }
+
+        using var connection = DatabaseService.GetConnection();
+        var user = connection.Table<User>().FirstOrDefault(u => u.Id == App.CurrentUser.Id);
+
+        if (user != null)
+        {
+            user.Address = Address;
+            connection.Update(user);
+            await Application.Current.MainPage.DisplayAlert("Success", "Adresa uspjesno azurirana", "OK");
+        }
+        else
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "User not found.", "OK");
+        }
     }
 }
