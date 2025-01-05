@@ -2,6 +2,7 @@
 using System;
 using SQLite;
 using System.IO;
+using ECOllect.Models;
 
 namespace ECOllect.Database
 {

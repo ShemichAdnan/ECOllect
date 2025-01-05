@@ -1,4 +1,5 @@
 using System.Windows.Input;
+using ECOllect.Database;
 using ECOllect.Models;
 using ECOllect.Views;
 
@@ -8,7 +9,7 @@ public class ActionDetailViewModel : BaseViewModel
 {
     private readonly CommunityAction _action;
 
-    public string Id => _action.Id;
+    public int Id => _action.Id;
     public string Title => _action.Title;
     public string Description => _action.Description;
     public DateTime Date => _action.Date;

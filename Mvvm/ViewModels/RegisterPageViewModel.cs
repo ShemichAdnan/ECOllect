@@ -2,6 +2,7 @@
 using ECOllect.Database;
 using ECOllect.Mvvm.Models;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 using ECOllect.Services;
 using ECOllect.ViewModels;

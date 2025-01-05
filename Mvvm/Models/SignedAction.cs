@@ -1,3 +1,5 @@
+using SQLite;
+
 namespace ECOllect.Models
 {
     public class SignedAction

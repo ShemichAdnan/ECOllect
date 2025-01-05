@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System.Text.RegularExpressions;
+using System.Windows.Input;
+using ECOllect.Database;
 using ECOllect.Models;
 using ECOllect.Services;
 using ECOllect.Views;
@@ -102,6 +104,7 @@ public class ProfileViewModel : BaseViewModel
         if (user != null)
         {
             user.Email = NewEmail;
+            App.CurrentUser.Email = NewEmail;
             connection.Update(user);
             await Application.Current.MainPage.DisplayAlert("Success", "Email uspješno ažuriran", "OK");
         }
@@ -132,6 +135,7 @@ public class ProfileViewModel : BaseViewModel
         if (user != null)
         {
             user.PhoneNumber = NewPhoneNumber;
+            App.CurrentUser.PhoneNumber = NewPhoneNumber;
             connection.Update(user);
             await Application.Current.MainPage.DisplayAlert("Success", "Broj telefona uspjesno azuriran", "OK");
         }
@@ -155,6 +159,7 @@ public class ProfileViewModel : BaseViewModel
         if (user != null)
         {
             user.Address = Address;
+            App.CurrentUser.Address = NewAddress;
             connection.Update(user);
             await Application.Current.MainPage.DisplayAlert("Success", "Adresa uspjesno azurirana", "OK");
         }
