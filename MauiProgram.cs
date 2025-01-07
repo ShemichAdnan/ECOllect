@@ -151,6 +151,7 @@ public static class MauiProgram
 
         builder.Services.AddTransient<HomeViewModel>();
         builder.Services.AddTransient<ActionDetailViewModel>();
+        builder.Services.AddTransient<NewActionViewModel>();
         builder.Services.AddTransient<MapViewModel>();
 
         return builder.Build();

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ECOllect.Views.NewActionPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame BackgroundColor="#62F48E"
+                   BorderColor="#62F48E"
+                   CornerRadius="0"
+                   HeightRequest="25"
+                   />
+            <VerticalStackLayout Padding="20,20,20,20" Spacing="20">
+                <Label FontSize="32" 
+                    FontAttributes="Bold">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="ECO" TextColor="Black" FontAttributes="Bold"/>
+                            <Span Text="llect" TextColor="#62F48E" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <HorizontalStackLayout Spacing="10" Padding="0,20,0,25">
+                    <BoxView Color="#62F48E" 
+                     WidthRequest="4" 
+                     VerticalOptions="Fill"/>
+                    <Label Text="Kreiraj novu akciju!"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
+                </HorizontalStackLayout>
+                <Frame Padding="0"
+                       BorderColor="#F3F3F3"
+                       CornerRadius="8"
+                       HasShadow="False"
+                       BackgroundColor="#F3F3F3"
+                       HeightRequest="50">
+                    <Entry Text="{Binding Title}"
+                       Placeholder="Naslov"
+                       Margin="15,0"
+                       TextColor="#6C6C6C"
+                       PlaceholderColor="#6C6C6C"
+                       VerticalOptions="Center"/>
+                </Frame>
+                <Frame Padding="0"
+                       BorderColor="#F3F3F3"
+                       CornerRadius="8"
+                       HasShadow="False"
+                       BackgroundColor="#F3F3F3"
+                       HeightRequest="50">
+                    <Entry Text="{Binding Description}"
+                       Placeholder="Opis akcije"
+                       Margin="15,0"
+                       TextColor="#6C6C6C"
+                       PlaceholderColor="#6C6C6C"
+                       VerticalOptions="Center"/>
+                </Frame>
+                <Frame Padding="0"
+                       BorderColor="#F3F3F3"
+                       CornerRadius="8"
+                       HasShadow="False"
+                       BackgroundColor="#F3F3F3"
+                       HeightRequest="50">
+                    <Entry Text="{Binding Location}"
+                       Placeholder="Lokacija"
+                       Margin="15,0"
+                       TextColor="#6C6C6C"
+                       PlaceholderColor="#6C6C6C"
+                       VerticalOptions="Center"/>
+                </Frame>
+                <Frame Padding="0"
+                       BorderColor="#F3F3F3"
+                       CornerRadius="8"
+                       HasShadow="False"
+                       BackgroundColor="#F3F3F3"
+                       HeightRequest="50">
+                    <Entry Text="{Binding Latitude}"
+                       Placeholder="Geografska širina"
+                       Margin="15,0"
+                       TextColor="#6C6C6C"
+                       PlaceholderColor="#6C6C6C"
+                       VerticalOptions="Center"/>
+                </Frame>
+                <Frame Padding="0"
+                       BorderColor="#F3F3F3"
+                       CornerRadius="8"
+                       HasShadow="False"
+                       BackgroundColor="#F3F3F3"
+                       HeightRequest="50">
+                    <Entry Text="{Binding Longitude}"
+                       Placeholder="Geografska dužina"
+                       Margin="15,0"
+                       TextColor="#6C6C6C"
+                       PlaceholderColor="#6C6C6C"
+                       VerticalOptions="Center"/>
+                </Frame>
+                <Frame Padding="0"
+                       BorderColor="#F3F3F3"
+                       CornerRadius="8"
+                       HasShadow="False"
+                       BackgroundColor="#F3F3F3"
+                       HeightRequest="50">
+                    <Entry Text="{Binding Prize}"
+                       Placeholder="Nagrada"
+                       Margin="15,0"
+                       TextColor="#6C6C6C"
+                       PlaceholderColor="#6C6C6C"
+                       VerticalOptions="Center"/>
+                </Frame>
+                <Frame Padding="0"
+                       BorderColor="#F3F3F3"
+                       CornerRadius="8"
+                       HasShadow="False"
+                       BackgroundColor="#F3F3F3"
+                       HeightRequest="50">
+                    <Entry Text="{Binding Image}"
+                       Placeholder="Slike"
+                       Margin="15,0"
+                       TextColor="#6C6C6C"
+                       PlaceholderColor="#6C6C6C"
+                       VerticalOptions="Center"/>
+                </Frame>
+
+                <Grid Padding="30,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Padding="15,0"
+                           BorderColor="#F3F3F3"
+                           CornerRadius="8"
+                           HasShadow="False"
+                           BackgroundColor="#F3F3F3"
+                           HeightRequest="50"
+                           Grid.Column="0" >
+                     <DatePicker Date="{Binding Date}"
+                                 VerticalOptions="Center"
+                                 BackgroundColor="#F5F5F5" 
+                                 TextColor="#6C6C6C"/>
+                    </Frame>
+                </Grid>
+
+                <Button Text="Dodaj akciju"
+                        Command="{Binding AddActionCommand}"
+                        BackgroundColor="#262938"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="25"
+                        HeightRequest="50"/>
+
+                <Button Text="Vrati se nazad"
+                        Command="{Binding GoBackCommand}"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#1C1B1F"
+                        FontAttributes="Bold"
+                        CornerRadius="25"
+                        HeightRequest="50"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
