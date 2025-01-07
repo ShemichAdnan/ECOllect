@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using ECOllect.Database;
 using ECOllect.Models;
+using ECOllect.Mvvm.Models;
 using ECOllect.Services;
 using ECOllect.Views;
 namespace ECOllect.ViewModels;
@@ -9,7 +10,7 @@ namespace ECOllect.ViewModels;
 public class ProfileViewModel : BaseViewModel
 {
     public string UserImage => App.CurrentUser?.ImageUrl;
-    public string FullName => $"{App.CurrentUser?.FirstName} {App.CurrentUser?.LastName}";
+    public string FullName => $"{App.CurrentUser?.FirstName ?? string.Empty} {App.CurrentUser?.LastName ?? string.Empty}".Trim();
     public string Email => App.CurrentUser?.Email;
     public string PhoneNumber => App.CurrentUser?.PhoneNumber;
     public string Address => App.CurrentUser?.Address;

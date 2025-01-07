@@ -7,7 +7,6 @@ using System.Windows.Input;
 using ECOllect.Services;
 using ECOllect.ViewModels;
 using ECOllect.Views;
-using User = ECOllect.Database.User;
 
 namespace ECOllect.Mvvm.ViewModels
 {
