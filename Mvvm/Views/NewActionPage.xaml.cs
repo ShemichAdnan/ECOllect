@@ -1,18 +1,15 @@
 using ECOllect.Models;
+using ECOllect.Mvvm.ViewModels;
 using ECOllect.ViewModels;
 
 namespace ECOllect.Views;
 
-public partial class ActionDetailPage : ContentPage
+public partial class NewActionPage : ContentPage
 {
-    public ActionDetailPage(CommunityAction action)
+    public NewActionPage()
     {
         InitializeComponent();
-        BindingContext = new ActionDetailViewModel(action);
-    }
-    private async void OnBackButtonClicked(object sender, EventArgs e)
-    {
-        await Navigation.PopAsync(); 
+        BindingContext = new NewActionViewModel();
     }
 }
     

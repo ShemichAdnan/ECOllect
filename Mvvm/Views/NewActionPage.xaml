@@ -103,6 +103,19 @@
                        HasShadow="False"
                        BackgroundColor="#F3F3F3"
                        HeightRequest="50">
+                    <Entry Text="{Binding Participants}"
+                           Placeholder="Potreban broj ucesnika"
+                           Margin="15,0"
+                           TextColor="#6C6C6C"
+                           PlaceholderColor="#6C6C6C"
+                           VerticalOptions="Center"/>
+                </Frame>
+                <Frame Padding="0"
+                       BorderColor="#F3F3F3"
+                       CornerRadius="8"
+                       HasShadow="False"
+                       BackgroundColor="#F3F3F3"
+                       HeightRequest="50">
                     <Entry Text="{Binding Prize}"
                        Placeholder="Nagrada"
                        Margin="15,0"

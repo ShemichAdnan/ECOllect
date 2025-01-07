@@ -2,8 +2,10 @@
 using ECOllect.Database;
 using ECOllect.Mvvm.Models;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
+using ECOllect.Models;
 using ECOllect.Services;
 using ECOllect.ViewModels;
 using ECOllect.Views;
@@ -14,10 +16,11 @@ namespace ECOllect.Mvvm.ViewModels
     {
         private string _title;
         private string _description;
-        private string _date;
+        private DateTime _date;
         private string _location;
         private string _latitude;
         private string _longitude;
+        private string _participants;
         private string _prize;
         private string _image;
 
@@ -33,7 +36,7 @@ namespace ECOllect.Mvvm.ViewModels
             set => SetProperty(ref _description, value);
         }
 
-        public string Date
+        public DateTime Date
         {
             get => _date;
             set => SetProperty(ref _date, value);
@@ -57,6 +60,12 @@ namespace ECOllect.Mvvm.ViewModels
             set => SetProperty(ref _longitude, value);
         }
 
+        public string Participants
+        {
+            get => _participants;
+            set => SetProperty(ref _participants, value);
+        }
+
         public string Prize
         {
             get => _prize;
@@ -72,7 +81,7 @@ namespace ECOllect.Mvvm.ViewModels
         public ICommand AddActionCommand { get; }
         public ICommand GoBackCommand { get; }
 
-        public NewActionViewModel(MockDataService mockDataService)
+        public NewActionViewModel()
         {
             AddActionCommand = new Command(async () => await AddActionAsync());
             GoBackCommand = new Command(async () => await GoBack());
@@ -80,7 +89,7 @@ namespace ECOllect.Mvvm.ViewModels
 
         private async Task AddActionAsync()
         {
-            if (string.IsNullOrWhiteSpace(Title) || string.IsNullOrWhiteSpace(Description) || string.IsNullOrWhiteSpace(Location) || string.IsNullOrWhiteSpace(Latitude) || string.IsNullOrWhiteSpace(Longitude) || string.IsNullOrWhiteSpace(Prize) || string.IsNullOrWhiteSpace(Image))
+            if (string.IsNullOrWhiteSpace(Title) || string.IsNullOrWhiteSpace(Description) || string.IsNullOrWhiteSpace(Location) || string.IsNullOrWhiteSpace(Latitude.ToString()) || string.IsNullOrWhiteSpace(Longitude.ToString()) || Convert.ToInt32(Prize) <= 0 || string.IsNullOrWhiteSpace(Image))
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Molimo unesite sve podatke", "OK");
                 return;
@@ -93,9 +102,10 @@ namespace ECOllect.Mvvm.ViewModels
                 Description = Description,
                 Date = Date,
                 Location = Location,
-                Latitude = Latitude,
-                Longitude = Longitude,
-                Prize = Prize,
+                Latitude = Convert.ToDouble(Latitude),
+                Longitude = Convert.ToDouble(Longitude),
+                Participants = Convert.ToInt32(Participants),
+                Prize = Convert.ToInt32(Prize),
                 Image = Image
             };
             connection.Insert(action);

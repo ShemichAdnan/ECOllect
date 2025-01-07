@@ -12,6 +12,7 @@ namespace ECOllect.Models
         public string Location { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public int Participants { get; set; }
         public int Prize { get; set; }
         public string Image { get; set; }
 }

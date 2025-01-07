@@ -2,6 +2,7 @@
 using ECOllect.Database;
 using ECOllect.Models;
 using ECOllect.Mvvm.Models;
+using ECOllect.Mvvm.ViewModels;
 using ECOllect.Services;
 using ECOllect.ViewModels;
 

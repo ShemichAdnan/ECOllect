@@ -228,11 +228,11 @@
                                                VerticalOptions="Center"/>
                                         </HorizontalStackLayout>
                                         <HorizontalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="End"  BackgroundColor="#F3F3F3" Padding="0,0,15,0" Spacing="5">
-                                            <Label Text="{Binding ParticipantCount}"   TextColor="#6C6C6C" Padding="0,5,0,0"/>
+                                            <Label Text="{Binding Participants}"   TextColor="#6C6C6C" Padding="0,5,0,0"/>
                                             <Image Source="participants.png" 
-                                               HeightRequest="17" 
-                                               WidthRequest="17"
-                                               VerticalOptions="Center"/>
+                                                   HeightRequest="17" 
+                                                   WidthRequest="17"
+                                                   VerticalOptions="Center"/>
                                         </HorizontalStackLayout>
 
 
@@ -267,7 +267,7 @@
 
                 <Button Text="Pogledaj više" BackgroundColor="#262938" TextColor="#FFFFFF" WidthRequest="180" CornerRadius="25" x:Name="loadMoreButton" Command="{Binding LoadMoreCommand}" IsVisible="{Binding IsLoadMoreButtonVisible}"></Button >
 
-                <Button Text="Dodaj novu akciju" BackgroundColor="#262938" IsVisible="{Binding IsOrganizer}" TextColor="#FFFFFF" WidthRequest="180" CornerRadius="25" x:Name="loadMoreButton" Command="{Binding LoadMoreCommand}" IsVisible="{Binding NavigateToNewActionPage}"></Button >
+                <Button Text="Dodaj novu akciju" BackgroundColor="#262938" IsVisible="{Binding IsOrganizer}" TextColor="#FFFFFF" WidthRequest="180" CornerRadius="25" x:Name="AddNewAction" Command="{Binding NavigateToNewActionPage}"></Button >
 
 
                 <Label Text="Popusti uz bodove" Margin="0,10" TextColor="#9C9C9C" FontSize="Medium"/>
