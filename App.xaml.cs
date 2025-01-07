@@ -1,7 +1,6 @@
 ﻿using ECOllect.Views;
 using ECOllect.Models;
 using ECOllect.Mvvm.Models;
-using User = ECOllect.Database.User;
 
 namespace ECOllect;
 
@@ -9,8 +8,8 @@ using System.Text.Json;
 
 public partial class App : Application
 {
-    private static Database.User _currentUser;
-    public static Database.User CurrentUser
+    private static User _currentUser;
+    public static User CurrentUser
     {
         get
         {

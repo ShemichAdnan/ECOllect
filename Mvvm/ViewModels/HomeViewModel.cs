@@ -19,6 +19,7 @@ public class HomeViewModel : BaseViewModel
     public ICommand LoadMoreCommand { get; }
     public ICommand NavigateToDetailCommand { get; }
     public ICommand NavigateToPromotionCommand { get; }
+    public ICommand NavigateToNewActionPage { get; }
 
     private bool _isLoadMoreButtonVisible = true;
     public bool IsLoadMoreButtonVisible
@@ -70,6 +71,12 @@ public class HomeViewModel : BaseViewModel
             }
             
         });
+
+        NavigateToNewActionPage = new Command(async () =>
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new NewActionPage());
+        });
+
         NavigateToSponsorDetailCommand = new Command<Sponsor>(async (sponsor) =>
         {
             if (sponsor != null)
