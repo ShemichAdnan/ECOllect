@@ -157,26 +157,40 @@
                    Margin="0,-20,0,0"
                    BorderColor="White">
                 <VerticalStackLayout Spacing="15">
-                    <Button Text="Prijavi se"
-                    Command="{Binding SignActionCommand}"
-                    BackgroundColor="#62F48E"
-                    TextColor="#202020"
-                    
-                    CornerRadius="10"
-                    Margin="0,10,0,0"
-                    Padding="30,10"
-                    HorizontalOptions="Start"/>
+                    <Frame Padding="30,10,30,10" BorderColor="Transparent" BackgroundColor="#62F48E" CornerRadius="10" HorizontalOptions="Start">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SignActionCommand}" />
+                        </Frame.GestureRecognizers>
+                        <HorizontalStackLayout>
+                            <Label 
+                                Text="Pristupi"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                Padding="0,0,5,0"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                
+                                />
+                            <Image Source="check.png" WidthRequest="15"/>
+                        </HorizontalStackLayout>
+                    </Frame>
 
-                    <Button Text="Otkazi prijavu"
-                    Command="{Binding UnsignActionCommand}"
-                    BackgroundColor="#d3e3d8"
-                    TextColor="#202020"
-                    
-                    CornerRadius="10"
-                    Margin="0,10,0,0"
-                    Padding="30,10"
-                    HorizontalOptions="Start"/>
-
+                    <Frame Padding="30,10,30,10" BorderColor="Transparent" BackgroundColor="#d3e3d8" CornerRadius="10" HorizontalOptions="Start">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding UnsignActionCommand}" />
+                        </Frame.GestureRecognizers>
+                        <HorizontalStackLayout>
+                            <Label 
+                                Text="Otkazi prijavu"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                Padding="0,0,5,0"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                />
+                            <Image Source="xicon.png" WidthRequest="15"/>
+                        </HorizontalStackLayout>
+                    </Frame>
                     <Label Text="Opis akcije"
                            FontSize="20"
                            FontAttributes="Bold"
