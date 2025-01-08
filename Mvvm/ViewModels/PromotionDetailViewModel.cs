@@ -21,7 +21,7 @@ public class PromotionDetailViewModel : BaseViewModel
         set => SetProperty(ref _sponsor, value);
     }
 
-    public string RelatedPromotionsTitle => $"Još od {Sponsor?.Name}";
+    public string RelatedPromotionsTitle => $"Joï¿½ od {Sponsor?.Name}";
 
     public ObservableCollection<Promotion> RelatedPromotions { get; } = new();
 
@@ -41,7 +41,7 @@ public class PromotionDetailViewModel : BaseViewModel
         LoadRelatedPromotions();
 
         GoBackCommand = new Command(async () => await GoBack());
-        RedeemCommand = new Command(async () => await RedeemPromotion());
+        RedeemCommand = new Command<Promotion>(async (p) => await RedeemPromotion(p));
         OpenPromotionCommand = new Command<Promotion>(async (p) => await OpenPromotion(p));
         NavigateToProfileCommand = new Command(async () => await NavigateToProfile());
     }
@@ -63,8 +63,18 @@ public class PromotionDetailViewModel : BaseViewModel
         await Application.Current.MainPage.Navigation.PopAsync();
     }
 
-    private async Task RedeemPromotion()
+    private async Task RedeemPromotion(Promotion promotion)
     {
+        if (App.CurrentUser.Points < promotion.Points)
+        {
+            await Application.Current.MainPage.DisplayAlert("Greska", "Nemate dovoljno poena za preuzimanje nagrade!", "OK");
+            return;
+        }
+
+        App.CurrentUser.Points -= promotion.Points;
+        using var connection = DatabaseService.GetConnection();
+        connection.Update(App.CurrentUser);
+
         await Application.Current.MainPage.DisplayAlert("Success", "Nagrada je preuzeta!", "OK");
     }
 

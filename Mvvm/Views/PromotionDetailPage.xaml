@@ -124,6 +124,7 @@
 
                 <Button Text="Preuzmi nagradu"
                         Command="{Binding RedeemCommand}"
+                        CommandParameter="{Binding}"
                         BackgroundColor="#262938"
                         TextColor="White"
                         CornerRadius="25"
