@@ -3,6 +3,7 @@ using ECOllect.Models;
 using System.Windows.Input;
 using ECOllect.Views;
 using System.Linq;
+using ECOllect.Database;
 
 namespace ECOllect.ViewModels;
 
@@ -40,6 +41,7 @@ public class HomeViewModel : BaseViewModel
     private const int SponsorsPerLoad = 2;
 
     public ICommand LoadMoreSponsorsCommand { get; }
+    public ICommand RemoveActionCommand { get; }
     private bool _isLoadMoreSponsorsVisible = true;
     public bool IsLoadMoreSponsorsVisible
     {
@@ -84,6 +86,9 @@ public class HomeViewModel : BaseViewModel
                 await Application.Current.MainPage.Navigation.PushAsync(new SponsorDetailPage(sponsor));
             }
         });
+        
+        RemoveActionCommand = new Command<CommunityAction>(async (p) => await RemoveAction(p));
+
 
 
         _allSponsors = SampleData.GetSampleSponsors();
@@ -94,6 +99,19 @@ public class HomeViewModel : BaseViewModel
 
     }
     
+    private async Task RemoveAction(CommunityAction action)
+    {
+        if (action != null)
+        {
+            if (await Application.Current.MainPage.DisplayAlert("Warning", "Jeste li sigurni da želite izbrisati ovu akciju?", "Da", "Ne"))
+            {
+                using var connection = DatabaseService.GetConnection();
+                connection.Delete(action);
+                _allActions.Remove(action);
+                DisplayedActions.Remove(action);
+            }
+        }
+    }
 
     private void LoadInitialItems() => LoadMoreItems();
 

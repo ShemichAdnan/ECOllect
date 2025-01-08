@@ -236,20 +236,12 @@
                                         </HorizontalStackLayout>
 
 
-
-                                        <HorizontalStackLayout Grid.Row="2" Grid.Column="2" HorizontalOptions="Start" Margin="0,0,12,0">
-                                            <Label 
-                                                Text="Podijeli"
-                                                BackgroundColor="Transparent"
-                                                TextColor="#6C6C6C"
-                                                Padding="0,6,5,0"
-                                                />
-                                            <Image Source="share.png" WidthRequest="15"/>
-                                        </HorizontalStackLayout>
-                                        <Frame Padding="10,0,10,0" Grid.Row="2" Grid.Column="3" BorderColor="Transparent" BackgroundColor="#62F48E" CornerRadius="20">
+                                        
+                                        <Frame Padding="10,0,10,0" Grid.Row="2" Grid.Column="3" BorderColor="Transparent" BackgroundColor="#d9d9d9" CornerRadius="20">
                                             <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=NavigateToDetailCommand}"
-                                                    CommandParameter="{Binding .}"/>
+
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=RemoveActionCommand}"
+                                                                      CommandParameter="{Binding }"/>
                                             </Frame.GestureRecognizers>
                                             <HorizontalStackLayout>
                                                 <Label 
@@ -257,7 +249,22 @@
                                                     BackgroundColor="Transparent"
                                                     TextColor="Black"
                                                     Padding="0,5,5,0"
-                                                    />
+                                                />
+                                                <Image Source="check.png" WidthRequest="15"/>
+                                            </HorizontalStackLayout>
+                                        </Frame>
+                                        <Frame Padding="10,0,10,0" Grid.Row="2" Grid.Column="3" BorderColor="Transparent" BackgroundColor="#62F48E" CornerRadius="20">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=NavigateToDetailCommand}"
+                                                                      CommandParameter="{Binding .}"/>
+                                            </Frame.GestureRecognizers>
+                                            <HorizontalStackLayout>
+                                                <Label 
+                                                    Text="Pristupi"
+                                                    BackgroundColor="Transparent"
+                                                    TextColor="Black"
+                                                    Padding="0,5,5,0"
+                                                />
                                                 <Image Source="check.png" WidthRequest="15"/>
                                             </HorizontalStackLayout>
                                         </Frame>
