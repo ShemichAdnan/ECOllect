@@ -18,10 +18,17 @@ public class ProfileViewModel : BaseViewModel
     public string UserRole => App.CurrentUser?.Role.ToString();
     public bool IsNotOrganizer => App.CurrentUser.Role.ToString() != "Organizator";
 
+    private string _password;
     private string _email;
     private string _phoneNumber;
     private string _address;
     
+    public string NewPassword
+    {
+        get => _password;
+        set => SetProperty(ref _password, value);
+    }
+
     public string NewEmail
     {
         get => _email;
@@ -43,6 +50,7 @@ public class ProfileViewModel : BaseViewModel
     public ICommand LogoutCommand { get; }
     public ICommand GoBackCommand { get; }
     public ICommand ReportErrorCommand { get; }
+    public ICommand EditPasswordCommand { get; }
     public ICommand EditEmailCommand { get; }
     public ICommand EditPhoneCommand { get; }
     public ICommand EditAddressCommand { get; }
@@ -55,6 +63,7 @@ public class ProfileViewModel : BaseViewModel
         LogoutCommand = new Command(async () => await LogoutAsync());
         GoBackCommand = new Command(async () => await GoBackAsync());
         ReportErrorCommand = new Command(async () => await ReportErrorAsync());
+        EditPasswordCommand = new Command(async () => await EditPasswordAsync());
         EditEmailCommand = new Command(async () => await EditEmailAsync());
         EditPhoneCommand = new Command(async () => await EditPhoneAsync());
         EditAddressCommand = new Command(async () => await EditAddressAsync());
@@ -82,6 +91,37 @@ public class ProfileViewModel : BaseViewModel
     private async Task ReportErrorAsync()
     {
         await Application.Current.MainPage.DisplayAlert("Report Error", "Prijavio si problem, kolege koje ovo upravo gledaju će ga riješiti :D.", "OK");
+    }
+
+    private async Task EditPasswordAsync()
+    {
+        if (string.IsNullOrWhiteSpace(NewPassword))
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "Lozinka ne može biti prazna.", "OK");
+            return;
+        }
+
+        string passwordPattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
+        if (!Regex.IsMatch(NewPassword, passwordPattern))
+        {
+            await Application.Current.MainPage.DisplayAlert("Greška", "Lozinka mora imati najmanje 8 karaktera, jedno slovo, jedan broj i jedan specijalni znak", "OK");
+            return;
+        }
+    
+        using var connection = DatabaseService.GetConnection();
+        var user = connection.Table<User>().FirstOrDefault(u => u.Id == App.CurrentUser.Id);
+
+        if (user != null)
+        {
+            user.Password = NewPassword;
+            App.CurrentUser.Password = NewPassword;
+            connection.Update(user);
+            await Application.Current.MainPage.DisplayAlert("Success", "Lozinka uspješno ažurirana", "OK");
+        }
+        else
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "Korisnik nije pronadjen", "OK");
+        }
     }
 
     private async Task EditEmailAsync()
