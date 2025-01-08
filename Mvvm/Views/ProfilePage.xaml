@@ -237,7 +237,7 @@
                         <Entry Grid.Column="0" 
                             Text="{Binding NewPassword}" 
                             Placeholder="••••••••••••"
-                            isPassword="true"
+                            IsPassword="True"
                             TextColor="#262938"
                             FontSize="16"
                             Margin="15,0,0,0"/>
