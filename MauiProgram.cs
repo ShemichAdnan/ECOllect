@@ -22,8 +22,10 @@ public static class MauiProgram
             });
 
         DatabaseService.InitializeDatabase();
-
+        
         // Dodavanje korisnika i akcija u bazu podataka (namijenjeno za brze testiranje)
+        using var connection = DatabaseService.GetConnection();
+
         var users = new List<User>
         {
             new User

@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using ECOllect.Database;
 using ECOllect.Models;
 using ECOllect.Views;
 
@@ -65,13 +66,13 @@ public class PromotionDetailViewModel : BaseViewModel
 
     private async Task RedeemPromotion(Promotion promotion)
     {
-        if (App.CurrentUser.Points < promotion.Points)
+        if (App.CurrentUser.Points < promotion.PointsCost)
         {
             await Application.Current.MainPage.DisplayAlert("Greska", "Nemate dovoljno poena za preuzimanje nagrade!", "OK");
             return;
         }
 
-        App.CurrentUser.Points -= promotion.Points;
+        App.CurrentUser.Points -= promotion.PointsCost;
         using var connection = DatabaseService.GetConnection();
         connection.Update(App.CurrentUser);
 
