@@ -237,7 +237,7 @@
 
 
                                         
-                                        <Frame Padding="10,0,10,0" Grid.Row="2" Grid.Column="3" BorderColor="Transparent" BackgroundColor="#d9d9d9" CornerRadius="20">
+                                        <Frame Padding="10,0,10,0" Grid.Row="2" Grid.Column="2" BorderColor="Transparent" BackgroundColor="#d9d9d9" CornerRadius="20" IsVisible="{Binding IsOrganizer}" Margin="0,0,10,0">
                                             <Frame.GestureRecognizers>
 
                                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=RemoveActionCommand}"
@@ -245,12 +245,12 @@
                                             </Frame.GestureRecognizers>
                                             <HorizontalStackLayout>
                                                 <Label 
-                                                    Text="Pristupi"
+                                                    Text="Izbriši akciju"
                                                     BackgroundColor="Transparent"
                                                     TextColor="Black"
-                                                    Padding="0,5,5,0"
+                                                    Padding="0,3.5,5,0"
                                                 />
-                                                <Image Source="check.png" WidthRequest="15"/>
+                                                <Image Source="xicon.png" WidthRequest="10"/>
                                             </HorizontalStackLayout>
                                         </Frame>
                                         <Frame Padding="10,0,10,0" Grid.Row="2" Grid.Column="3" BorderColor="Transparent" BackgroundColor="#62F48E" CornerRadius="20">

@@ -67,7 +67,7 @@ public static class MauiProgram
             new CommunityAction {
                 Id = 1,
                 Title = "Očistimo Kamberovica Polje",
-                Description = "Kamberovica polje, kao glavno okupljalište mladih, zahtijeva našu pažnju. Pridružite nam se u akciji čišćenja!",
+                Description = "Akcija \"Očistimo Kamberovića Polje\" ima za cilj uklanjanje otpada i uređenje ovog omiljenog rekreativnog prostora u Zenici. Volonteri će se okupiti kako bi očistili zelene površine, staze i obale rijeke Bosne od smeća, te osvježili izgled parka za sve posjetitelje. Osim čišćenja, planirano je postavljanje dodatnih kanti za otpad i edukativnih tabli o važnosti očuvanja prirode. Akcija također uključuje podjelu sadnica i organizaciju kratkih edukacija za djecu o očuvanju okoliša. Nakon završetka, planirano je druženje učesnika uz osvježenje i lagane aktivnosti kako bismo zajedno proslavili doprinos čistijem Kamberovića Polju.",
                 Date = new DateTime(2024, 1, 26,16,30,0),
                 Location = "Kamberovica Polje",
                 Participants = 20,

@@ -22,7 +22,7 @@ public class PromotionDetailViewModel : BaseViewModel
         set => SetProperty(ref _sponsor, value);
     }
 
-    public string RelatedPromotionsTitle => $"Jo� od {Sponsor?.Name}";
+    public string RelatedPromotionsTitle => $"Još od {Sponsor?.Name}";
 
     public ObservableCollection<Promotion> RelatedPromotions { get; } = new();
 
@@ -66,6 +66,7 @@ public class PromotionDetailViewModel : BaseViewModel
 
     private async Task RedeemPromotion(Promotion promotion)
     {
+        
         if (App.CurrentUser.Points < promotion.PointsCost)
         {
             await Application.Current.MainPage.DisplayAlert("Greska", "Nemate dovoljno poena za preuzimanje nagrade!", "OK");
@@ -77,6 +78,7 @@ public class PromotionDetailViewModel : BaseViewModel
         connection.Update(App.CurrentUser);
 
         await Application.Current.MainPage.DisplayAlert("Success", "Nagrada je preuzeta!", "OK");
+        //Application.Current.MainPage = new NavigationPage(new HomePage());
     }
 
     private async Task OpenPromotion(Promotion promotion)
