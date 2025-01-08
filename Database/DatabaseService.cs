@@ -9,7 +9,7 @@ namespace ECOllect.Database
 {
     public static class DatabaseService
     {
-        private static readonly string DatabasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ECOllect.db3");
+        private static readonly string DatabasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "EcollectforTesting.db3");
 
         public static SQLiteConnection GetConnection()
         {
