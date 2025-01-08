@@ -157,7 +157,7 @@
                    Margin="0,-20,0,0"
                    BorderColor="White">
                 <VerticalStackLayout Spacing="15">
-                    <Frame Padding="30,10,30,10" BorderColor="Transparent" BackgroundColor="#62F48E" CornerRadius="10" HorizontalOptions="Start">
+                    <Frame Padding="30,10,30,10" BorderColor="Transparent" BackgroundColor="#62F48E" CornerRadius="10" HorizontalOptions="Start" IsVisible="{Binding isNotParticipant}">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SignActionCommand}" />
                         </Frame.GestureRecognizers>
@@ -175,7 +175,7 @@
                         </HorizontalStackLayout>
                     </Frame>
 
-                    <Frame Padding="30,10,30,10" BorderColor="Transparent" BackgroundColor="#d3e3d8" CornerRadius="10" HorizontalOptions="Start">
+                    <Frame Padding="30,10,30,10" BorderColor="Transparent" BackgroundColor="#d3e3d8" CornerRadius="10" HorizontalOptions="Start" IsVisible="{Binding isParticipant}">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding UnsignActionCommand}" />
                         </Frame.GestureRecognizers>

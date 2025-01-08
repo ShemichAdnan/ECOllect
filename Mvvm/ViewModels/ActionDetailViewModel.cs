@@ -21,6 +21,8 @@ public class ActionDetailViewModel : BaseViewModel
     public string UserImage => App.CurrentUser?.ImageUrl;
     public string Points => App.CurrentUser?.Points.ToString();
     public bool IsNotOrganizer => App.CurrentUser.Role.ToString() != "Organizator";
+    public bool isParticipant => DatabaseService.GetConnection().Table<SignedAction>().FirstOrDefault(u => u.ActionId == Id && u.UserId == App.CurrentUser.Id) != null;
+    public bool isNotParticipant => DatabaseService.GetConnection().Table<SignedAction>().FirstOrDefault(u => u.ActionId == Id && u.UserId == App.CurrentUser.Id) == null;
     public ICommand NavigateToProfileCommand { get; }
     public ICommand SignActionCommand { get; }
     public ICommand UnsignActionCommand { get; }
