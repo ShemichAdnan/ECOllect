@@ -188,7 +188,7 @@ public class ProfileViewModel : BaseViewModel
 
     private async Task EditAddressAsync()
     {
-        if (string.IsNullOrWhiteSpace(Address))
+        if (string.IsNullOrWhiteSpace(NewAddress))
         {
             await Application.Current.MainPage.DisplayAlert("Error", "Adresa ne moze biti prazna", "OK");
             return;

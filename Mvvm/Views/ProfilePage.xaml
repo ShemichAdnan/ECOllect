@@ -339,43 +339,7 @@
             </VerticalStackLayout>
 
 
-            <!--<VerticalStackLayout Spacing="20" Padding="20">
-                
-                
-
-                
-                
-                    
-
-                
-                <VerticalStackLayout Spacing="10">
-                    
-
-                    
-
-                    <Label Text="Adresa"
-                           TextColor="#666666"
-                           FontSize="14"/>
-                    <Frame BackgroundColor="#F8F8F8"
-                           Padding="15"
-                           BorderColor="Transparent"
-                           CornerRadius="8">
-                        <Grid ColumnDefinitions="*,Auto">
-                            <Label Text="{Binding Address}"/>
-                            <Image Grid.Column="1"
-                                   Source="editicon.png"
-                                   HeightRequest="20"
-                                   WidthRequest="20">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding EditAddressCommand}"/>
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </Grid>
-                    </Frame>
-                </VerticalStackLayout>
-            </VerticalStackLayout>
-        
-            </Grid>-->
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
