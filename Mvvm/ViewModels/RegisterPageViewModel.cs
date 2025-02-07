@@ -94,7 +94,7 @@ namespace ECOllect.Mvvm.ViewModels
                 return;
             }
 
-            string passwordPattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
+            string passwordPattern = @"^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z\d ])[^\s]{8,}$";
             if (!Regex.IsMatch(Password, passwordPattern))
             {
                 await Application.Current.MainPage.DisplayAlert("Greška", "Lozinka mora imati najmanje 8 karaktera, jedno slovo, jedan broj i jedan specijalni znak", "OK");
@@ -107,10 +107,10 @@ namespace ECOllect.Mvvm.ViewModels
                 return;
             }
 
-            string phonePattern = @"^\+?[1-9]\d{1,14}$";
+            string phonePattern = @"^0\d{8,}$";
             if (!Regex.IsMatch(PhoneNumber, phonePattern))
             {
-                await Application.Current.MainPage.DisplayAlert("Greška", "Broj telefona nije validan", "OK");
+                await Application.Current.MainPage.DisplayAlert("Greška", "Broj telefona nije validan, primjer validnog broja: 061234567", "OK");
                 return;
             }
 

@@ -42,6 +42,7 @@ public class HomeViewModel : BaseViewModel
 
     public ICommand LoadMoreSponsorsCommand { get; }
     public ICommand RemoveActionCommand { get; }
+    public ICommand ShowOrganiserInfo { get; }
     private bool _isLoadMoreSponsorsVisible = true;
     public bool IsLoadMoreSponsorsVisible
     {
@@ -96,6 +97,8 @@ public class HomeViewModel : BaseViewModel
         LoadMoreSponsorsCommand = new Command(LoadMoreSponsors);
         LoadInitialSponsors();
         NavigateToProfileCommand = new Command(async () => await NavigateToProfile());
+        ShowOrganiserInfo = new Command(OrganiserInfo);
+        
 
     }
     
@@ -115,6 +118,10 @@ public class HomeViewModel : BaseViewModel
 
     private void LoadInitialItems() => LoadMoreItems();
 
+    private void OrganiserInfo()
+    {
+        Application.Current.MainPage.DisplayAlert("Prijave za organizatora", "Više informacija za prijave će biti uskoro.", "OK");
+    }
     private void LoadMoreItems()
     {
         var itemsToAdd = _allActions.Skip(_currentIndex).Take(ItemsPerLoad).ToList();

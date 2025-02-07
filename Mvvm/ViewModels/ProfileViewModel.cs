@@ -17,7 +17,6 @@ public class ProfileViewModel : BaseViewModel
     public string Points => App.CurrentUser?.Points.ToString();
     public string UserRole => App.CurrentUser?.Role.ToString();
     public bool IsNotOrganizer => App.CurrentUser.Role.ToString() != "Organizator";
-
     private string _password;
     private string _email;
     private string _phoneNumber;

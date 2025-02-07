@@ -47,8 +47,12 @@
                         Padding="5,0,0,0"
                         />
                 </HorizontalStackLayout>
-
-                <HorizontalStackLayout Grid.Column="1" BackgroundColor="Transparent" IsVisible="{Binding IsUser}">
+                <Frame Grid.Column="1" BackgroundColor="Transparent" IsVisible="{Binding IsUser}" BorderColor="Transparent" Padding="0">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowOrganiserInfo}"/>
+                    </Frame.GestureRecognizers>
+                    <HorizontalStackLayout>
+                    
                     <Label 
                         Text="Istraži više"
                         TextColor="Black"
@@ -65,6 +69,7 @@
                     </Label>
 
                 </HorizontalStackLayout>
+                </Frame>
 
             </Grid>
 
