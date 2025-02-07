@@ -1,17 +1,24 @@
 _📌 ECOllect - Ekološka mobilna aplikacija  
 📍 Zenica, 2025  
 🛠 Tehnologije: .NET, Visual Studio, JetBrains Rider, MAUI, GitHub  
-👥 Autori: Adnan Šemić & Ahmed Spahić_<br><br>
+👥 Autori: Adnan Šemić & Ahmed Spahić_
+<hr>  
+<br>  
+
 ![ECollect aplikacija](Resources/Images/advertisement.png) <br><br>
+<hr> 
+
 **📖 Opis aplikacije**  
 ECOllect je mobilna aplikacija koja motiviše korisnike da učestvuju u ekološkim akcijama kroz sistem nagrađivanja poenima.
+<hr> 
 
 **🔹 Ključne funkcionalnosti:**  
-✔️ Registracija i prijava korisnika  
+✔️ Registracija i prijava korisnika   
 ✔️ Prikaz liste i mape ekoloških akcija  
 ✔️ Prijava i odjava sa akcija  
 ✔️ Sistem poena i nagrada  
 ✔️ Shop za korištenje poena
+<hr> 
 
 **👥 Uloge**  
 👤 Korisnik  
@@ -27,6 +34,7 @@ ECOllect je mobilna aplikacija koja motiviše korisnike da učestvuju u ekološk
 🏆 Sponzor  
 ✅ Pregledava nadolazeće radne akcije  
 ✅ Unosi proizvode u aplikaciju koji se mogu kupiti korisničkim poenima
+<hr> 
 
 **🚀 Funkcionalnosti aplikacije**  
 🔑 Registracija i prijava  
@@ -46,6 +54,7 @@ ECOllect je mobilna aplikacija koja motiviše korisnike da učestvuju u ekološk
 🛍️ Shop
 ✅ Korisnici kupuju proizvode koristeći poene  
 ✅ Detaljni prikaz proizvoda sa opisom i slikama
+<hr> 
 
 **📊 Analiza tržišta**  
 🚨 Problem  
@@ -56,11 +65,13 @@ ECOllect je mobilna aplikacija koja motiviše korisnike da učestvuju u ekološk
 Korisnici: Ekološki svjesni pojedinci  
 Organizatori: Ekološke organizacije i lokalne vlasti  
 Sponzori: Kompanije koje žele promovisati proizvode kroz društveno korisne projekte
+<hr> 
 
 **🎯 Prednosti ECollecta**  
 ✅ Sistem poena koji motiviše korisnike  
 ✅ Jednostavan pregled i prijava na akcije  
 ✅ Povezivanje zajednice kroz ekološke akcije
+<hr> 
 
 **🎨 Okvirno rješenje korisničkog sučelja**  
 🏠 Početna stranica  
@@ -83,3 +94,4 @@ Sponzori: Kompanije koje žele promovisati proizvode kroz društveno korisne pro
 🏆 Sponzori  
 📌 Lista sponzora sa njihovim artiklima  
 📌 Detaljan prikaz artikla sa opcijom kupovine
+<hr> 
