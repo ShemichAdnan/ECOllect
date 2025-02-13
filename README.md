@@ -1,7 +1,7 @@
 # 🌿 ECOllect - Smart Waste Management & Eco-Engagement App
 
 **ECOllect** is a mobile application designed to encourage community participation in **environmental clean-up actions** through a **point-based reward system**. Users can sign up for eco-actions, track events on a **map**, earn points for participation, and redeem them for sponsored rewards. <br><br>
-![ECollect aplikacija](Resources/Images/advertisement.png)
+<img src="Resources/Images/advertisement.png" height="400"/>
 ## 🚀 Features
 - 📍 **Interactive Map** – View and sign up for eco-actions near you
 - 🏆 **Point System** – Earn points by participating in events and redeem rewards
@@ -17,17 +17,17 @@
 - **GitHub** – Version control  
 
 ## 📸 Screenshots  
-![ECollect aplikacija](Resources/Images/loginPage.jpg)
-![ECollect aplikacija](Resources/Images/homePage.jpg)
-![ECollect aplikacija](Resources/Images/actionPage.jpg)
-![ECollect aplikacija](Resources/Images/mapPage.jpg)
-![ECollect aplikacija](Resources/Images/profilePage.jpg)
-![ECollect aplikacija](Resources/Images/sponsorPage.jpg) 
+<img src="Resources/Images/loginPage.jpg" height="300"/>
+<img src="Resources/Images/homePage.jpg" height="600"/>
+<img src="Resources/Images/actionPage.jpg" height="300"/>
+<img src="Resources/Images/mapPage.jpg" height="300"/>
+<img src="Resources/Images/profilePage.jpg" height="300"/>
+<img src="Resources/Images/sponsorPage.jpg" height="300"/>
 
 ## 🛠️ Installation  
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/yourusername/ECOllect.git
+   git clone https://github.com/ShemichAdnan/ECOllect.git
    cd ECOllect
    ```
 2. Open the project in **Visual Studio** or **JetBrains Rider**  
