@@ -1,97 +1,47 @@
-_📌 ECOllect - Ekološka mobilna aplikacija  
-📍 Zenica, 2025  
-🛠 Tehnologije: .NET, Visual Studio, JetBrains Rider, MAUI, GitHub  
-👥 Autori: Adnan Šemić & Ahmed Spahić_
-<hr>  
-<br>  
+# 🌿 ECOllect - Smart Waste Management & Eco-Engagement App
 
-![ECollect aplikacija](Resources/Images/advertisement.png) <br><br>
-<hr> 
+**ECOllect** is a mobile application designed to encourage community participation in **environmental clean-up actions** through a **point-based reward system**. Users can sign up for eco-actions, track events on a **map**, earn points for participation, and redeem them for sponsored rewards.  
+![ECollect aplikacija](Resources/Images/advertisement.png)
+## 🚀 Features
+- 📍 **Interactive Map** – View and sign up for eco-actions near you
+- 🏆 **Point System** – Earn points by participating in events and redeem rewards
+- 📅 **Event Registration** – Sign up or cancel participation easily
+- 🛙 **Sponsor Shop** – Use points to claim rewards from sponsors
+- 👤 **User Profiles** – Track personal participation and earned points  
 
-**📖 Opis aplikacije**  
-ECOllect je mobilna aplikacija koja motiviše korisnike da učestvuju u ekološkim akcijama kroz sistem nagrađivanja poenima.
-<hr> 
+## 🛠️ Tech Stack
+- **.NET MAUI** – Cross-platform mobile development  
+- **C#** – Backend logic  
+- **Firebase** – User authentication and database  
+- **Google Maps API** – Location-based eco-actions  
+- **GitHub** – Version control  
 
-**🔹 Ključne funkcionalnosti:**  
-✔️ Registracija i prijava korisnika   
-✔️ Prikaz liste i mape ekoloških akcija  
-✔️ Prijava i odjava sa akcija  
-✔️ Sistem poena i nagrada  
-✔️ Shop za korištenje poena
-<hr> 
+## 📸 Screenshots  
+*(Add your screenshots here)*  
 
-**👥 Uloge**  
-👤 Korisnik  
-✅ Kreira račun putem forme za registraciju  
-✅ Pregledava listu ili mapu radnih akcija u svom regionu  
-✅ Prijavljuje se na akcije klikom na dugme  
-✅ Skuplja poene kroz učešće u akcijama i koristi ih za nagrade
+## 🛠️ Installation  
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/yourusername/ECOllect.git
+   cd ECOllect
+   ```
+2. Open the project in **Visual Studio** or **JetBrains Rider**  
+3. Restore dependencies:  
+   ```bash
+   dotnet restore
+   ```
+4. Run the application:  
+   ```bash
+   dotnet run
+   ```
 
-📌 Organizator  
-✅ Kreira radne akcije sa svim potrebnim detaljima  
-✅ Vodi evidenciju prisustva na akcijama
+## 🎯 Target Audience
+- 🌱 **Eco-conscious individuals** looking to contribute to environmental efforts  
+- 🏢 **Organizations & local governments** organizing clean-up events  
+- 🛒 **Sponsors & companies** promoting sustainability through rewards  
 
-🏆 Sponzor  
-✅ Pregledava nadolazeće radne akcije  
-✅ Unosi proizvode u aplikaciju koji se mogu kupiti korisničkim poenima
-<hr> 
+## 👤 Authors  
+- **Adnan Šemić** - [GitHub](https://github.com/yourusername) | [LinkedIn](https://linkedin.com/in/adnansemic)  
 
-**🚀 Funkcionalnosti aplikacije**  
-🔑 Registracija i prijava  
-📌 Korisnici mogu kreirati račun ili se prijaviti na postojeći.
 
-📅 Lista i mapa radnih akcija  
-✅ Lista prikazuje osnovne informacije o akcijama (naziv, datum, poeni, broj učesnika).  
-✅ Mapa sa markerima prikazuje lokacije svih akcija u blizini korisnika.  
-✅ Prijava na akcije  
-✅ Korisnici se prijavljuju klikom na dugme  
-✅ Mogu otkazati prijavu do 24h prije početka akcije
 
-🏅 Sistem poena  
-✅ Korisnici zarađuju poene za učešće u akcijama  
-✅ Poeni se koriste za kupovinu nagrada
-
-🛍️ Shop
-✅ Korisnici kupuju proizvode koristeći poene  
-✅ Detaljni prikaz proizvoda sa opisom i slikama
-<hr> 
-
-**📊 Analiza tržišta**  
-🚨 Problem  
-❌ Nedostatak motivacije i nagrada za učešće u ekološkim akcijama  
-❌ Slaba svijest zajednice o lokalnim ekološkim problemima
-
-🎯 Ciljna publika  
-Korisnici: Ekološki svjesni pojedinci  
-Organizatori: Ekološke organizacije i lokalne vlasti  
-Sponzori: Kompanije koje žele promovisati proizvode kroz društveno korisne projekte
-<hr> 
-
-**🎯 Prednosti ECollecta**  
-✅ Sistem poena koji motiviše korisnike  
-✅ Jednostavan pregled i prijava na akcije  
-✅ Povezivanje zajednice kroz ekološke akcije
-<hr> 
-
-**🎨 Okvirno rješenje korisničkog sučelja**  
-🏠 Početna stranica  
-📌 Lista trenutnih akcija sa osnovnim detaljima  
-📌 Dugme za prikaz mape sa označenim akcijama  
-📌 Prikaz sponzora sa njihovim artiklima
-
-📍 Mapa akcija  
-🗺️ Interaktivna mapa sa markerima za lokacije akcija  
-📌 Klik na marker otvara detalje akcije
-
-📃 Detalji akcije  
-📌 Opis akcije, datum, broj učesnika, dodijeljeni poeni  
-📌 Dugme za prijavu ili odjavu sa akcije
-
-👤 Profil korisnika  
-📌 Prikaz korisničkih podataka (ime, email, poeni)  
-📌 Mogućnost uređivanja podataka i odjave
-
-🏆 Sponzori  
-📌 Lista sponzora sa njihovim artiklima  
-📌 Detaljan prikaz artikla sa opcijom kupovine
-<hr> 
