@@ -1,6 +1,6 @@
 # 🌿 ECOllect - Smart Waste Management & Eco-Engagement App
 
-**ECOllect** is a mobile application designed to encourage community participation in **environmental clean-up actions** through a **point-based reward system**. Users can sign up for eco-actions, track events on a **map**, earn points for participation, and redeem them for sponsored rewards.  
+**ECOllect** is a mobile application designed to encourage community participation in **environmental clean-up actions** through a **point-based reward system**. Users can sign up for eco-actions, track events on a **map**, earn points for participation, and redeem them for sponsored rewards. <br><br>
 ![ECollect aplikacija](Resources/Images/advertisement.png)
 ## 🚀 Features
 - 📍 **Interactive Map** – View and sign up for eco-actions near you
@@ -17,7 +17,12 @@
 - **GitHub** – Version control  
 
 ## 📸 Screenshots  
-*(Add your screenshots here)*  
+![ECollect aplikacija](Resources/Images/loginPage.jpg)
+![ECollect aplikacija](Resources/Images/homePage.jpg)
+![ECollect aplikacija](Resources/Images/actionPage.jpg)
+![ECollect aplikacija](Resources/Images/mapPage.jpg)
+![ECollect aplikacija](Resources/Images/profilePage.jpg)
+![ECollect aplikacija](Resources/Images/sponsorPage.jpg) 
 
 ## 🛠️ Installation  
 1. Clone the repository:  
@@ -41,7 +46,8 @@
 - 🛒 **Sponsors & companies** promoting sustainability through rewards  
 
 ## 👤 Authors  
-- **Adnan Šemić** - [GitHub](https://github.com/yourusername) | [LinkedIn](https://linkedin.com/in/adnansemic)  
+- **Adnan Šemić** - [GitHub](https://github.com/ShemichAdnan)
+- **Ahmed Spahić** - [GitHub](https://github.com/daddyDOT) 
 
 
 
